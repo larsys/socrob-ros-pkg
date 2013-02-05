@@ -10,6 +10,6 @@
   <author>Maintained by Rodrigo Ventura and Filipe Jesus</author>
   <license>BSD</license>
   <review status="unreviewed" notes=""/>
-  <url>http://socrob.isr.ist.utl.pt</url>
+  <url>http://raposa.isr.ist.utl.pt</url>
   <depend stack="ros"/>
 </stack>
