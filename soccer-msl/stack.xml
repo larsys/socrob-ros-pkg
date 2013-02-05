@@ -1,0 +1,14 @@
+<stack>
+  <description brief="soccer robots of the RoboCup middle size league">
+    Robotic soccer robots involved in the RoboCup Middle Size League (MSL)
+
+    Institute for Systems and Robotics
+    Instituto Superior Tecnico
+    Lisbon, Portugal
+  </description>
+  <author>Maintained by Joao Reis</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://socrob.isr.ist.utl.pt</url>
+  <depend stack="ros"/>
+</stack>

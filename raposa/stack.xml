@@ -1,0 +1,15 @@
+<stack>
+  <description brief="tracked wheel platform for search and rescue operations">
+    RAPOSA is a tracked wheel platform designed for search and rescue operations.
+    It is also involved in RoboCup Robot Rescue League competitions.
+
+    Institute for Systems and Robotics
+    Instituto Superior Tecnico
+    Lisbon, Portugal
+  </description>
+  <author>Maintained by Rodrigo Ventura and Filipe Jesus</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://socrob.isr.ist.utl.pt</url>
+  <depend stack="ros"/>
+</stack>

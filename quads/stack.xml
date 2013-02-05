@@ -1,0 +1,13 @@
+<stack>
+  <description brief="quadrotors platform">
+
+    Institute for Systems and Robotics
+    Instituto Superior Tecnico
+    Lisbon, Portugal
+  </description>
+  <author>Maintained by Henrique Silva</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://socrob.isr.ist.utl.pt</url>
+  <depend stack="ros"/>
+</stack>
