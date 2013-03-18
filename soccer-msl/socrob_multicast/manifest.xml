@@ -1,0 +1,14 @@
+<package>
+  <description brief="SocRobMulticast">
+     SocRob Multicast library, to connect multiple masters using ROS.
+  </description>
+  <author>Joao Reis/jreis@isr.ist.utl.pt</author>
+  <license>LGPL</license>
+  <!--<review status="unreviewed" notes=""/>-->
+  <!--<url>http://ros.org/wiki/socrob_multicast</url>-->
+  <export>
+    <cpp cflags="-I${prefix}/include"
+         lflags="-L${prefix}/lib -Wl,-rpath,${prefix}/lib -lsocrob_multicast"/>
+  </export>
+  <depend package="roscpp"/>
+</package>

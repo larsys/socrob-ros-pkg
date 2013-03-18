@@ -1,0 +1,9 @@
+/**
+\mainpage
+\htmlinclude manifest.html
+
+\b socrob_base 
+
+This package contains SocRobMulticast, a library to connect multiple masters using ROS.
+
+*/
