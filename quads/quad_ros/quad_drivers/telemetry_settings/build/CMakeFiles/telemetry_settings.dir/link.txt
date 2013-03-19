@@ -1,1 +1,0 @@
-/usr/bin/c++   -O2 -g     -pthread CMakeFiles/telemetry_settings.dir/src/telemetry_settings.o  -o ../bin/telemetry_settings -rdynamic -L/opt/ros/fuerte/lib -lroscpp -lrostime -lrosconsole -lroscpp_serialization -lxmlrpcpp -livy -Wl,-rpath,/opt/ros/fuerte/lib 
