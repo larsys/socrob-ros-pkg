@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-
-<launch>
-	<node pkg="telemetry_settings" type="telemetry_settings" name="telemetry_settings" respawn="true">
-		<param name="ac_id" value="2" />
-		<param name="period" value="1" />
-	</node>
-</launch>
