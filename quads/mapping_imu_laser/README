@@ -1,0 +1,5 @@
+Under development
+
+Currently plays a bag file with imu and laser scan and creates a 3D map with octomap
+
+--Diogo Rolo
