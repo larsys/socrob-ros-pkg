@@ -1,0 +1,1 @@
+/usr/bin/c++   -O2 -g     -pthread CMakeFiles/quad_motors.dir/src/quad_motors.o  -o ../bin/quad_motors -rdynamic -L/opt/ros/fuerte/lib -L/usr/include -lroscpp -lrostime -lrosconsole -lroscpp_serialization -lxmlrpcpp -livy -Wl,-rpath,/opt/ros/fuerte/lib:/usr/include 

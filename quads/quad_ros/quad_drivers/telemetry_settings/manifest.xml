@@ -1,0 +1,16 @@
+<package>
+  <description brief="telemetry_settings">
+
+     telemtery_settings
+
+  </description>
+  <author>Henrique</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/telemetry_settings</url>
+  <depend package="roscpp"/>
+  <depend package="rospy"/>
+
+</package>
+
+

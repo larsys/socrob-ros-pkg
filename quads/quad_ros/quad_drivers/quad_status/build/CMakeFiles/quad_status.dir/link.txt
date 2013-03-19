@@ -1,0 +1,1 @@
+/usr/bin/c++   -O2 -g     -pthread CMakeFiles/quad_status.dir/src/status.o  -o ../bin/quad_status -rdynamic -L/opt/ros/fuerte/lib -L/usr/include -lroscpp -lrostime -lrosconsole -lroscpp_serialization -lxmlrpcpp -livy -Wl,-rpath,/opt/ros/fuerte/lib:/usr/include 
