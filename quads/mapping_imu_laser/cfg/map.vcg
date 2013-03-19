@@ -1,0 +1,95 @@
+Background\ ColorB=0
+Background\ ColorG=0
+Background\ ColorR=0
+Camera\ Config=0.500398 3.8904 10 0 0 0
+Camera\ Type=rviz::OrbitViewController
+Fixed\ Frame=/map
+LaserScan..AxisColorAutocompute\ Value\ Bounds=1
+LaserScan..AxisColorAxis=2
+LaserScan..AxisColorMax\ Value=10
+LaserScan..AxisColorMin\ Value=-10
+LaserScan..AxisColorUse\ Fixed\ Frame=1
+LaserScan..FlatColorColorB=1
+LaserScan..FlatColorColorG=1
+LaserScan..FlatColorColorR=1
+LaserScan..IntensityAutocompute\ Intensity\ Bounds=1
+LaserScan..IntensityChannel\ Name=intensity
+LaserScan..IntensityMax\ ColorB=1
+LaserScan..IntensityMax\ ColorG=1
+LaserScan..IntensityMax\ ColorR=1
+LaserScan..IntensityMax\ Intensity=101
+LaserScan..IntensityMin\ ColorB=0
+LaserScan..IntensityMin\ ColorG=0
+LaserScan..IntensityMin\ ColorR=0
+LaserScan..IntensityMin\ Intensity=101
+LaserScan..IntensityUse\ full\ RGB\ spectrum=0
+LaserScan.Alpha=1
+LaserScan.Billboard\ Size=0.01
+LaserScan.Color\ Transformer=Intensity
+LaserScan.Decay\ Time=0
+LaserScan.Enabled=1
+LaserScan.Position\ Transformer=XYZ
+LaserScan.Queue\ Size=10
+LaserScan.Selectable=1
+LaserScan.Style=1
+LaserScan.Topic=/scan
+Map.Alpha=0.7
+Map.Draw\ Behind=0
+Map.Enabled=1
+Map.Topic=/map
+Path.Alpha=1
+Path.ColorB=1
+Path.ColorG=0.666667
+Path.ColorR=0.333333
+Path.Enabled=1
+Path.Topic=/trajectory
+Pose.Alpha=1
+Pose.ColorB=0
+Pose.ColorG=0.1
+Pose.ColorR=1
+Pose.Enabled=1
+Pose.Head\ Length=0.3
+Pose.Head\ Radius=0.2
+Pose.Shaft\ Length=1
+Pose.Shaft\ Radius=0.1
+Pose.Shape=0
+Pose.Topic=/slam_out_pose
+Property\ Grid\ Splitter=507,78
+Property\ Grid\ State=expanded=.Global Options;splitterratio=0.5
+QMainWindow=000000ff00000000fd00000003000000000000011d0000029bfc0200000001fb000000100044006900730070006c006100790073010000001d0000029b000000ee00ffffff00000001000001310000029bfc0200000003fb0000001e0054006f006f006c002000500072006f0070006500720074006900650073010000001d000000a90000006700fffffffb0000000a0056006900650077007301000000cc0000013d000000bb00fffffffb0000001200530065006c0065006300740069006f006e010000020f000000a90000006700ffffff00000003000003fe0000003efc0100000001fb0000000800540069006d00650100000000000003fe000002bf00ffffff000001a40000029b00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+TF.All\ Enabled=1
+TF.Enabled=1
+TF.Frame\ Timeout=15
+TF.Marker\ Scale=1
+TF.Show\ Arrows=1
+TF.Show\ Axes=1
+TF.Show\ Names=1
+TF.Update\ Interval=0
+Target\ Frame=<Fixed Frame>
+Tool\ 2D\ Nav\ GoalTopic=/move_base_simple/goal
+Tool\ 2D\ Pose\ EstimateTopic=initialpose
+[Display0]
+ClassName=rviz::MapDisplay
+Name=Map
+[Display1]
+ClassName=rviz::PoseDisplay
+Name=Pose
+[Display2]
+ClassName=rviz::TFDisplay
+Name=TF
+[Display3]
+ClassName=rviz::PathDisplay
+Name=Path
+[Display4]
+ClassName=rviz::LaserScanDisplay
+Name=LaserScan
+[TF.Frames.]
+base_stabilized.Enabled=1
+laser.Enabled=1
+map.Enabled=1
+scanmatcher_frame.Enabled=1
+[Window]
+Height=800
+Width=1038
+X=219
+Y=-3
