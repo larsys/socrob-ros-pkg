@@ -1,0 +1,9 @@
+\subsubsection parameters ROS parameters
+
+Reads and maintains the following parameters on the ROS server
+
+- \b "~fps" : \b [int] Republish with this fps rate. min: 1, default: 10, max: 30
+- \b "~grayscale" : \b [bool] If true, republish in grayscale. min: False, default: False, max: True
+- \b "~width_ratio" : \b [double] Republish with this width ratio. min: 0.1, default: 1.0, max: 1.0
+- \b "~height_ratio" : \b [double] Republish with this height ratio. min: 0.1, default: 1.0, max: 1.0
+

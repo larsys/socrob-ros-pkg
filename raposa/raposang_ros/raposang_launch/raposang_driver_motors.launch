@@ -1,0 +1,18 @@
+<launch>
+
+  <node pkg="raposang_driver" name="raposang_driver_motors" type="motors_node">
+    <param name="reads_per_second" 			type="int"			value="30" />
+    <param name="odometry_frequency"		type="int"			value="15" />
+    <param name="time_before_stop" 			type="int"			value="1" /> 
+    <param name="click_to_dist_left" 		type="double"		value="0.000016072" />    
+    <param name="click_to_dist_right" 	type="double"		value="0.000016072" />  
+    <param name="angle_to_value"				type="double"   value="-4.297" />    
+    <param name="angle_to_value_offset"	type="double"   value="554.9" /> 
+    <param name="max_angle_dif"					type="double"   value="5" />
+    <param name="min_angle"							type="double"   value="-50" />
+    <param name="max_angle"							type="double"   value="50" />           
+    <param name="reset_at_beginning"		type="bool"			value="true" />     
+    <param name="motors_port"  					type="string" 	value="/dev/ttyUSBmotors" />
+ 	</node> 
+ 	
+</launch>

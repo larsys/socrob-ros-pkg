@@ -1,0 +1,22 @@
+<launch>
+
+	<node pkg="raposang_bumblebee2" name="raposang_bumblebee2" type="raposang_bumblebee2_node">
+		<remap from="output_left_raw"    to="left/image"/>	
+		<remap from="output_right_raw"   to="right/image"/>	
+		<remap from="output_left_rect"   to="triclops/left/image"/>	
+		<remap from="output_right_rect"  to="triclops/right/image"/>	
+		<remap from="output_stereo_rect" to="triclops/stereo"/>			
+		
+		<param name="new_bb2_file" 	 type="bool"  	value="false" />
+		<param name="bb2_file_path"  type="string"  value="$(find raposang_bumblebee2)/triclops/triclops.cal" />				
+		<param name="frame_id_left"  type="string"  value="bb2_left" />
+		<param name="frame_id_right" type="string"  value="bb2_right" />
+		<param name="fps" 					 type="int" 		value="15" />	
+		<param name="rectify" 			 type="bool"  	value="true" />			
+		<param name="stereo" 	 			 type="bool"  	value="true" />			
+		<param name="normal"  			 type="bool"  	value="false" />			
+		<param name="flush" 				 type="bool" 	  value="true" />		
+		<param name="dma" 					 type="int" 		value="8" />		 		  
+	</node> 	
+  
+</launch>

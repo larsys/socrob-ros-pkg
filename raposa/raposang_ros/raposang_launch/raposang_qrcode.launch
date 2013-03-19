@@ -1,0 +1,8 @@
+ <launch>
+	<node pkg="raposang_qrcode" name="raposang_qrcode" type="raposang_qrcode_node" output="screen">
+	 
+		<remap from="input_image"          			to="/bb2/left/image"/>
+		
+	</node>		
+
+ </launch>

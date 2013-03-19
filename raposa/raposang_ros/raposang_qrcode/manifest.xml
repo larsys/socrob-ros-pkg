@@ -1,0 +1,18 @@
+<package>
+  <description brief="raposang_qrcode">
+
+     raposang_qrcode
+
+  </description>
+  <author>Raposa</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/raposang_qrcode</url>
+  <depend package="opencv2"/>
+  <depend package="roscpp"/>
+  <depend package="cv_bridge"/>  
+  <depend package="image_transport"/>
+    
+</package>
+
+
