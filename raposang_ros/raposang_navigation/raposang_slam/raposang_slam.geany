@@ -1,0 +1,19 @@
+
+[indentation]
+indent_width=2
+indent_type=1
+indent_hard_tab_width=8
+detect_indent=false
+indent_mode=2
+
+[project]
+name=raposang_slam
+base_path=/home/raposang/raposang_ros/raposang_slam/
+description=
+
+[long line marker]
+long_line_behaviour=1
+long_line_column=72
+
+[files]
+current_page=0

@@ -1,0 +1,19 @@
+<package>
+  <description brief="raposang_feature">
+
+     raposang_feature
+
+  </description>
+  <author>Raposa</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/raposang_feature</url>
+  <depend package="roscpp"/>
+  <depend package="opencv2"/>
+  <depend package="raposang_msgs"/>
+  <depend package="sensor_msgs"/>
+  <depend package="cv_bridge"/>
+
+</package>
+
+

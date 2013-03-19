@@ -1,0 +1,30 @@
+<launch>
+	
+	<node pkg="raposang_emagin_z800" name="raposang_emagin_z800" type="imu_node" output="screen">
+
+		<param name="frequency" 					value="30.0"	/>
+		<param name="frame_id" 						value="/world"	/>
+		<param name="child_frame_id" 			value="/z800"	/>
+						
+	</node>	
+
+	<!-- <node pkg="raposang_emagin_z800" name="raposang_emagin_z800_control" type="control_node" output="screen">
+		<remap from="imu"                 to="imu_emagin_z800"		/>
+		<remap from="output_pan"          to="servo_pan"		/>
+		<remap from="output_tilt"         to="servo_tilt"		/>	
+							
+		<param name="frequency" 					value="30.0"	/>
+		<param name="frame_id" 						value="/world"	/>
+		<param name="child_frame_id" 			value="/z800"	/>
+						
+	</node>	-->
+
+	<!-- <node pkg="tf" type="static_transform_publisher" name="tf_world_to_imu_emagin_z800" args="0 0 0 0 0 0 world imu_emagin_z800 100" /> -->
+
+	<node pkg="raposang_wrap920" name="raposang_wrap920_control" type="monitor" cwd="node" /> 
+	
+		
+	<include file="$(find raposang_gui)/launch/launchWithoutKeiyasWork.launch" />
+
+</launch>
+

@@ -1,0 +1,14 @@
+<launch>
+
+	<node pkg="rosserial_python" type="serial_node.py" name="raposang_arduino" output="screen" 
+		args="/dev/ttyUSBarduino"  respawn="true">
+  	<param name="baud" 			  type="int"			value="57600" />
+  	<param name="tilt_offset" 	type="double" value="0.0" />
+  	<param name="tilt_min" 		type="double" value="20.0" />
+  	<param name="tilt_max" 		type="double" value="150.0" />
+  	<param name="pan_offset" 	type="double" value="0.0" />
+  	<param name="pan_min" 		type="double" value="0.0" />
+  	<param name="pan_max" 		type="double" value="180.0" />
+  </node>
+  
+</launch>

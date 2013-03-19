@@ -1,0 +1,57 @@
+<launch>
+
+  <arg name="joy_rate" default="5" />
+
+  <node pkg="joy" name="joy" type="joy_node">
+    <param name="deadzone" 			  	type="double"			value="0.10" />
+    <param name="autorepeat_rate"		type="double"			value="$(arg joy_rate)"  />	
+    <param name="coalesce_interval" type="double"			value="0.05" /> 	  	
+  </node>
+
+  <node pkg="raposang_joy" name="raposang_joy" type="raposang_joy_node" >
+    
+    <remap from="input_joy"				 to="joy"/>
+    <remap from="input_odometry"				 to="/raposa/odometry"/>
+
+    <remap from="output_motion" 	 to="/raposang/motion"/>
+    <remap from="output_arm" 			 to="/raposang/arm"/>
+    <remap from="output_pan" 			 to="/servo_pan"/>
+    <remap from="output_tilt" 		 to="/servo_tilt"/>
+    <remap from="output_light" 		 to="/raposang_light"/>
+
+    <param name="max_arm" type="double" value="35" />
+    <param name="min_arm" type="double" value="-25" />
+
+    <param name="frequency"							type="double" value="$(arg joy_rate)" />
+
+    <param name="button_stop_arm" 	 		type="int"	value="2" />	
+    <param name="button_max_arm" 		 	type="int"	value="4" />			
+    <param name="button_min_arm"		 	type="int"	value="3" />				
+    <param name="button_default_arm" 		type="int"	value="1" />	
+
+    <param name="button_vel_1"				 type="int"	value="7" />	
+    <param name="button_vel_2"				 type="int"	value="5" />			
+    <param name="button_vel_3"				 type="int"	value="6" />				
+    <param name="button_vel_4"				 type="int"	value="8" />
+
+    <param name="button_reset_pantilt" type="int"	value="9" />	
+    <param name="button_light" 				 type="int"	value="10" />		  
+    <param name="button_break" 				 type="int"	value="11" />	
+
+    <param name="axis_wheels" 		type="int"	value="1" />	
+    <param name="axis_arm" 		    type="int"	value="3" />		  
+    <param name="axis_pantilt" 		type="int"	value="2" />	
+
+    <param name="default_vel_wheels" 	type="int"	  value="500" />	
+    <param name="default_vel_arm" 	  type="double"		value="0.15" />	
+    <param name="default_vel_pan" 		type="double"	value="1.5" />			
+    <param name="default_vel_tilt"		type="double"	value="1.5" />	
+
+    <param name="turbo_1" type="double"	value="0.25" />	
+    <param name="turbo_2" type="double"	value="0.50" />			
+    <param name="turbo_3" type="double"	value="1.50" />				
+    <param name="turbo_4" type="double"	value="2.00" />			
+
+  </node>
+
+</launch>

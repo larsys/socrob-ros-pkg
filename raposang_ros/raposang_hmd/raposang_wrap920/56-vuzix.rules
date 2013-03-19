@@ -1,0 +1,1 @@
+ACTION=="add", DEVPATH=="*:1BAE:014B.*", MODE:="0666", SYMLINK:="wrap920"

@@ -1,0 +1,34 @@
+<launch>
+  
+  <arg name="hostname_value" default="192.168.0.253" />
+  <arg name="joy_rate" default="10" />
+
+  <node pkg="joy" name="joy" type="joy_node">
+    <param name="deadzone" 			  	type="double"			value="0.20" />
+    <param name="autorepeat_rate"		type="double"			value="$(arg joy_rate)"  />	
+    <param name="coalesce_interval" type="double"			value="0.05" /> 	  	
+  </node>
+
+  <node pkg="raposang_joy" name="raposang_joy_ipcamera" type="raposang_joy_ipcamera_node">
+    <remap from="input_joy"				 to="joy"/>
+    <remap from="output_ipcamera" 	 to="/IPCameraControl"/>
+  </node>
+    
+  <node name="panasonic_ip_camera_image"   pkg="raposang_panasonic_ip_camera" type="camera.py" output="screen" >
+    <param name="hostname" value="$(arg hostname_value)"/>
+  </node>
+  
+  <node name="panasonic_ip_camera_control" pkg="raposang_panasonic_ip_camera" type="control.py" output="screen" >
+    <param name="hostname" value="$(arg hostname_value)"/>
+  </node>
+
+  <node name="republish_ip" pkg="image_transport" type="republish" 
+    args="compressed in:=/panasonic_ip_camera/ _image_transport:=compressed raw out:=/panasonic_ip_camera/image_raw" />
+    
+  <node name="raposang_aim" pkg="raposang_aim" type="hub_node">
+    <remap from="image"            to="panasonic_ip_camera/image_raw"/>
+    <remap from="input_joy"				 to="IPCameraControl"/>
+  </node>
+      
+      
+</launch>

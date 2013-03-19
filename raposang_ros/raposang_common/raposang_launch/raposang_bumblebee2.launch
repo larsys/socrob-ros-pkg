@@ -1,0 +1,42 @@
+<launch>
+
+  <node pkg="raposang_bumblebee2" name="raposang_bumblebee2" type="raposang_bumblebee2_node" output="screen">
+		
+		
+    <param name="new_bb2_file" 	 type="bool"    value="false" />
+    <param name="bb2_file_path"  type="string"  value="$(find raposang_bumblebee2)/triclops/triclops.cal" />				
+    <param name="frame_id_left"  type="string"  value="bb2_left" />
+    <param name="frame_id_right" type="string"  value="bb2_right" />
+    <param name="fps"            type="int"     value="15" />	 
+     		
+    <param name="flush"          type="bool"    value="true" />		
+    <param name="dma_ring_size"  type="int"     value="10" />		 
+    
+ 	  <!-- Publish raw images using image_transport -->	
+
+    <param name="publish_raw_images" type="bool"    value="false" />	
+    <remap from="output_left_raw"    to="left/image"/>	
+    <remap from="output_right_raw"   to="right/image"/>	 
+    
+ 	  <!-- Publish rectified images using image_transport -->	 
+ 	    
+    <param name="publish_rectified_images"        type="bool"    value="true" />	
+    <remap from="output_left_rect"   to="triclops/left/image"/>	
+    <remap from="output_right_rect"  to="triclops/right/image"/>	
+    
+	  <!-- Publish using raposang_msgs::RaposaStereo. Usefull for receiving sincronized information (6D-SLAM) -->	
+		
+    <param name="publish_stereo_pack"     type="bool"    value="true" />
+    <param name="rectified_pack"     			type="bool"    value="true" />
+    <remap from="output_stereo_rect" to="triclops/stereo"/>	
+  
+		  
+  </node> 	
+
+	<node pkg="tf" type="static_transform_publisher" name="bb2_center_to_left" 
+		args="0.0 0.0 0.0597144999 0.0 0.0 0.0 /bb2 /bb2_left 100"/>
+
+	<node pkg="tf" type="static_transform_publisher" name="bb2_center_to_right" 
+		args="0.0 0.0 -0.0597144999 0.0 0.0 0.0 /bb2 /bb2_right 100"/>
+
+</launch>
