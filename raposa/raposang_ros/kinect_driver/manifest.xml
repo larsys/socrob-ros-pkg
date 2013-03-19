@@ -1,0 +1,43 @@
+<package>
+  <description brief="An OpenNI Kinect ROS driver">
+
+     kinect_driver with a driver for the kinect accelerometers and tilt motor.
+
+  </description>
+  <author>Miguel</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/kinect_driver</url>
+  
+  
+  <depend package="roscpp"/>
+  <depend package="std_msgs"/>
+  <depend package="sensor_msgs"/>
+  <depend package="openni"/>
+  <depend package="openni_camera"/>
+  <rosdep name="openni-dev"/>
+  <rosdep name="libusb1.0" />
+  <rosdep name="ps-engine"/>
+  <depend package="pcl"/>
+  <depend package="pcl_ros"/>
+  <depend package="image_transport" />
+  <depend package="camera_info_manager"/>
+  <depend package="rostime"/>
+  rosdep name="libboost-all-dev"
+  
+  <depend package="cv_bridge"/>
+  <rosdep name="opencv2.3"/>
+  
+  <export>
+    <cpp cflags="-I/usr/include/openni" lflags="-lOpenNI -lusb-1.0" />
+  </export>
+  
+  talvez
+  <depend package="rosbag"/>
+
+    
+  
+  
+</package>
+
+

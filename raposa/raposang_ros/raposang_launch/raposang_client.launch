@@ -1,0 +1,9 @@
+<launch>
+
+	<include file="$(find raposang_launch)/raposang_joy.launch" 
+		ns="raposang_control_wireless" />
+	
+	<node pkg="raposang_gui" name="raposang_client_telemetry" type="imu_telemetry" /> 
+
+</launch>
+

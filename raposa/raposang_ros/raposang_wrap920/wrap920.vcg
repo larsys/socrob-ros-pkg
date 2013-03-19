@@ -1,0 +1,59 @@
+Background\ ColorR=0
+Background\ ColorG=0
+Background\ ColorB=0
+Fixed\ Frame=/world
+Target\ Frame=<Fixed Frame>
+Axes.Enabled=1
+Axes.Length=10
+Axes.Radius=0.01
+Axes.Reference\ Frame=<Fixed Frame>
+Cube.Enabled=0
+Cube.Marker\ Topic=/monitor/cube
+Frame.=1
+Frame.Enabled=1
+Frame.Marker\ Topic=/monitor/frame
+Grid.Alpha=0.5
+Grid.Cell\ Size=1
+Grid.ColorR=0.5
+Grid.ColorG=0.5
+Grid.ColorB=0.5
+Grid.Enabled=1
+Grid.Line\ Style=0
+Grid.Line\ Width=0.03
+Grid.Normal\ Cell\ Count=0
+Grid.OffsetX=0
+Grid.OffsetY=0
+Grid.OffsetZ=0
+Grid.Plane=0
+Grid.Plane\ Cell\ Count=10
+Grid.Reference\ Frame=<Fixed Frame>
+Pose.Axes\ Length=2
+Pose.Axes\ Radius=0.05
+Pose.Enabled=0
+Pose.Shape=1
+Pose.Topic=/monitor/pose
+Tool\ 2D\ Nav\ GoalTopic=goal
+Tool\ 2D\ Pose\ EstimateTopic=initialpose
+Camera\ Type=rviz::OrbitViewController
+Camera\ Config=1.061 1.47259 5.69934 0 9.53674e-07 0
+Property\ Grid\ State=selection=Frame.Enabled;expanded=Cube.Enabled,Cube.Enabled.Cube.StatusTopStatus,Cube.Enabled.Cube.Namespaces,Frame.Enabled,Frame.Enabled.Frame.Namespaces;scrollpos=0,0;splitterpos=204,410;ispageselected=1
+[Display0]
+Name=Axes
+Package=rviz
+ClassName=rviz::AxesDisplay
+[Display1]
+Name=Grid
+Package=rviz
+ClassName=rviz::GridDisplay
+[Display2]
+Name=Pose
+Package=rviz
+ClassName=rviz::PoseDisplay
+[Display3]
+Name=Cube
+Package=rviz
+ClassName=rviz::MarkerDisplay
+[Display4]
+Name=Frame
+Package=rviz
+ClassName=rviz::MarkerDisplay

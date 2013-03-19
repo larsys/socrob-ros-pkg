@@ -1,0 +1,50 @@
+<launch>
+
+	<group ns="kinect">
+		
+		<node pkg="kinect_driver" name="kinect_driver" type="kinect_driver_node" required="true" output="screen">
+			<!-- The frame rate in pointclouds/s that the driver node will publish -->
+			<param name="frame_rate" value="10" type="double" />
+			<param name="record_bag" value="false" type="bool" />
+			<param name="record_video" value="false" type="bool" />
+			<remap from="pointcloud" to="depth_camera/pointcloud_color" />
+			<remap from="image" to="rgb_camera/image_color" />
+		</node>
+		
+		<!--node pkg="kinect_driver" name="kinect_aux_driver" type="kinect_aux_node" required="true" output="screen" -->
+			<!--remap from="cur_tilt_angle" to="motors/cur_tilt_angle" / -->
+			<!--remap from="cur_tilt_status" to="motors/cur_tilt_status" / -->
+			<!--remap from="tilt_angle" to="motors/tilt_angle" / -->
+			<!--remap from="imu" to="sensors/imu" / -->
+			<!--remap from="led_option" to="sensors/led_option" / -->
+		<!--/node-->
+		
+		<!-- <node pkg="compressed_pointcloud_transport" name="pointcloud_compressor" type="cloud_compressor" required="true" output="screen"-->
+			<!-- for a full list of profiles see: /io/include/pcl/compression/compression_profiles.h -->
+			<!--param name="pointcloud_compression_profile" value="MED_RES_ONLINE_COMPRESSION_WITHOUT_COLOR" / -->
+			<!--param name="cloud_msg_to_compress" value="/camera/rgb/points" / -->
+			<!--remap from="input" to="depth_camera/pointcloud_color" /-->
+			<!--remap from="output" to="depth_camera/pointcloud_color_compress" / -->
+		<!-- /node -->
+		
+		<!-- node pkg="compressed_pointcloud_transport" name="pointcloud_decompressor" type="cloud_decompressor" required="true" output="screen" -->
+			<!-- remap from="input" to="depth_camera/pointcloud_color_compress" / -->
+			<!-- remap from="output" to="depth_camera/pointcloud_color_decompress" / -->
+		<!-- /node> -->		
+		
+		
+		<!-- OS MEUS COMPRESSORES QUE NAO SAO OS MELHORES -->
+		
+		<node pkg="kinect_driver" name="pointcloud_compressor" type="pointcloud_compressor_node" required="true" output="screen">
+			<remap from="pointcloud" to="depth_camera/pointcloud_color" />
+			<remap from="pointcloud_compress" to="depth_camera/pointcloud_color_compress" />
+		</node>
+		
+		<node pkg="kinect_driver" name="pointcloud_decompressor" type="pointcloud_decompressor_node" required="true" output="screen">
+			<remap from="pointcloud_compress" to="depth_camera/pointcloud_color_compress" />
+			<remap from="pointcloud_decompress" to="depth_camera/pointcloud_color_decompress" />
+		</node> 
+  
+	</group>
+	
+</launch>

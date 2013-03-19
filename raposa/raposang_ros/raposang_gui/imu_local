@@ -1,0 +1,4 @@
+#! /usr/bin/python -O
+from imu import Viewer
+Viewer().main(False)
+# EOF

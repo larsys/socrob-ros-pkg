@@ -1,0 +1,21 @@
+<launch>
+	<group ns="kinect">
+																																									 
+		<node pkg="kinect_driver" name="kinect_driver" type="kinect_driver_node" required="true" output="screen">                                                        
+			<!-- The frame rate in pointclouds/s that the driver node will publish -->                                                                               
+			<param name="frame_rate" value="10" type="double" />                                                                                                     
+			<param name="record_bag" value="false" type="bool" />                                                                                                    
+			<param name="record_video" value="false" type="bool" />                                                                                                  
+			<remap from="pointcloud" to="depth" />                                                                                           
+			<remap from="image" to="image" />                                                                                                       
+		</node>                                                                                                                                                          
+																																											 
+		<node pkg="kinect_driver" name="pointcloud_compressor" type="pointcloud_compressor_node" required="true" output="screen">                                        
+			<remap from="pointcloud" to="depth" />                                                                                           
+			<remap from="pointcloud_compress" to="depth_compressed" />                                                                         
+			
+		</node>                                                                                                                                                 
+
+	</group>
+	
+</launch>

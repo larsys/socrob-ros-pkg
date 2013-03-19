@@ -1,0 +1,49 @@
+<launch>
+
+	<include file="$(find raposang_launch)/raposang_driver_motors.launch" /> 
+	<include file="$(find raposang_launch)/raposang_driver_relays.launch" /> 
+
+	<include file="$(find raposang_launch)/raposang_joy.launch" 
+		ns="raposang_control_default" />
+	
+	<include file="$(find raposang_launch)/raposang_arduino.launch" /> 
+		
+		
+	<include file="$(find raposang_launch)/raposang_imu.launch" /> 		
+	<include file="$(find raposang_launch)/raposang_bumblebee2.launch" ns="bb2"/>
+
+	<!-- <include file="$(find raposang_launch)/raposang_kinect_miguelvaz.launch" /> -->
+
+	<group ns="bb2">
+
+		<node pkg="raposang_video_repub" name="raposang_video_repub_left" type="raposang_video_repub_node">
+			<remap from="input" to="triclops/left/image"/>	
+			<remap from="output" to="left_for_video"/>		
+		  <param name="fps" 					type="int" 		value="15" />				
+		  <param name="grayscale" 		type="bool" 	value="false" />
+		  <param name="width_ratio"   type="double" value="0.5" />
+		  <param name="height_ratio"  type="double" value="1.0" />
+		  <param name="interpolation" type="bool" 	value="true" />
+		</node> 	
+
+		<node pkg="raposang_video_repub" name="raposang_video_repub_right" type="raposang_video_repub_node">
+			<remap from="input" to="triclops/right/image"/>		
+			<remap from="output" to="right_for_video"/>				
+		  <param name="fps" 					type="int" 		value="15" />				
+		  <param name="grayscale" 		type="bool" 	value="false" />
+		  <param name="width_ratio"   type="double" value="0.5" />
+		  <param name="height_ratio"  type="double" value="1.0" />
+		  <param name="interpolation" type="bool" 	value="true" />
+		</node> 	
+
+		<node pkg="dynamic_reconfigure" name="dynamic_reconfigure_right_for_video" type="dynparam" args="set /bb2/right_for_video/compressed jpeg_quality 20" /> 
+		<node pkg="dynamic_reconfigure" name="dynamic_reconfigure_left_for_video" type="dynparam" args="set /bb2/left_for_video/compressed jpeg_quality 20" />
+		<!-- <node pkg="dynamic_reconfigure" name="dynamic_reconfigure_kinect_video"   type="dynparam" args="set /camera/rgb/image_color/compressed jpeg_quality 20" /> -->
+
+		</group>
+
+		<node pkg="raposang_gui" name="raposang_server_telemetry" type="server_telemetry" /> 
+
+
+</launch>
+

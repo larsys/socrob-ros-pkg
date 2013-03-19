@@ -1,0 +1,10 @@
+<launch>
+
+		<node pkg="raposang_wrap920" name="raposang_wrap920_driver" type="raposang_wrap920_node" args="/dev/wrap920" />
+		
+		<node pkg="raposang_wrap920" name="raposang_wrap920_control" type="monitor" cwd="node" />
+		
+		<include file="$(find raposang_gui)/launch/launchWithoutKeiyasWork.launch" /> 
+
+</launch>
+

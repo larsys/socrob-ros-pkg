@@ -1,0 +1,9 @@
+---
+image_size_x: 640
+image_size_y: 480
+
+focal_lenght_x: 522.710420
+focal_lenght_y: 522.986249
+
+image_center_x: 311.910889
+image_center_y: 258.299761

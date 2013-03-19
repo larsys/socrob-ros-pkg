@@ -1,0 +1,7 @@
+ #!/bin/sh
+
+sudo apt-get install \
+ros-electric-joystick-drivers \
+ros-electric-imu-drivers \
+
+rosmake raposang_ros
