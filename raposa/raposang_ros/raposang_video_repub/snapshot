@@ -1,4 +1,0 @@
-#!/bin/bash
-rosrun raposang_video_repub save_one_image input_image:=/bb2/triclops/left/image ~image_transport:=compressed
-zbarimg newest.jpg
-eog newest.jpg

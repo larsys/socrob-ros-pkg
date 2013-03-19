@@ -1,4 +1,0 @@
-#! /usr/bin/python -O
-from telemetry import Telemetry
-Telemetry().main()
-# EOF

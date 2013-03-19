@@ -1,9 +1,0 @@
-<launch>
-	
-	<arg name="name" default="bag_slam_features_challenge_final"/>
-
-	<include file="$(find raposang_launch)/raposang_feature.launch" /> 		
-
-	<node name="rosbag" pkg="rosbag" type="record" output="screen" args="/bb2/triclops/left/image /raposang/features /raposang/odometry /imu/data -O /backup/$(arg name)" />   
-
-</launch>
