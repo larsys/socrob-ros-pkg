@@ -1,0 +1,22 @@
+<package>
+  <description brief="mapping_imu_laser">
+
+     mapping_imu_laser
+
+  </description>
+  <author>diogo</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/mapping_imu_laser</url>
+  <depend package="sensor_msgs"/>
+  <depend package="geometry_msgs"/>
+  <depend package="tf"/>
+  <depend package="rviz"/>
+  <depend package="laser_scan_matcher"/>
+  <depend package="laser_assembler"/>
+  <depend package="point_cloud_converter"/>
+  <depend package="octomap_server"/>
+
+</package>
+
+
