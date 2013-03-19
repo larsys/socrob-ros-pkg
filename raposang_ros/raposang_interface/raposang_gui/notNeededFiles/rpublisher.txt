@@ -1,0 +1,26 @@
+The republisher and the topics “issue”
+
+How to run a republisher?
+- rosrun image_transport republish compressed in:=/bb2/left/image_rect raw out:=felix
+- rosrun image_transport republish compressed in:=/bb2/left/image_raw raw out:=felix
+- rosrun guiPackageOneCamera myVideoImageSubscriber my_topic:=felix
+ (while “output” is the name of the topic that the subscriber subscribes to...).
+- It is important to run the “. setup-raposa.sh” in both of of the shells.
+- "compressed" can be also "theora"
+
+/--------------------------------------------------------------------------------------
+ . setup-raposa.sh (in both terminals)
+ rosrun image_transport republish compressed in:=/bb2/left/image_rect raw out:=lefttopic
+ rosrun image_transport republish compressed in:=/bb2/right/image_rect raw out:=righttopic
+ rosrun guiPackageParametersToCallback myVideoImageSubscriber
+ -------------------------------------------------------------------------------------/
+
+/**************************************************************************************
+COMMAND LINES FOR PRESENTATION
+ . setup-raposa.sh
+ rosrun image_transport republish compressed in:=/bb2/left_for_video raw out:=lefttopic
+ rosrun image_transport republish compressed in:=/bb2/right_for_video raw out:=righttopic
+ rosrun guiPackageTwoCamerasPointers myVideoImageSubscriber
+ . setup-raposa.sh
+ rosrun dynamic_reconfigure reconfigure_gui
+**************************************************************************************/

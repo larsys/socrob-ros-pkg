@@ -1,0 +1,37 @@
+ <launch>
+        <group ns="kinect">                                                                                                                                                      
+                                                                                                                                                                                 
+                <node pkg="kinect_driver" name="kinect_driver" type="kinect_driver_node" required="true" output="screen">                                                        
+                        <!-- The frame rate in pointclouds/s that the driver node will publish -->                                                                               
+                        <param name="frame_rate" value="10" type="double" />                                                                                                     
+                        <param name="record_bag" value="false" type="bool" />                                                                                                    
+                        <param name="record_video" value="false" type="bool" />                                                                                                  
+                        <remap from="pointcloud" to="depth_camera/pointcloud_color" />                                                                                           
+                        <remap from="image" to="rgb_camera/image_color" />                                                                                                       
+                </node>                                                                                                                                                          
+                                                                                                                                                                                 
+            <node pkg="kinect_driver" name="pointcloud_compressor" type="pointcloud_compressor_node" required="true" output="screen">                                        
+                        <remap from="pointcloud" to="depth_camera/pointcloud_color" />                                                                                           
+                        <remap from="pointcloud_compress" to="depth_camera/pointcloud_color_compress" />                                                                         
+                </node>                                                                                                                                                
+                                                                                                                                                                                 
+        </group>                 
+
+
+
+	<node pkg="raposang_odometry" name="raposang_odometry" type="raposang_odometry_node" output="screen">
+	 
+		<remap from="input_imu"          			to="/imu/data"/>
+		<remap from="input_odo"     					to="/raposang/odometry"/>
+		<remap from="output_pose"     				to="/raposang/odometry_pose"/>
+		
+	</node>		
+	
+<!--	<node pkg="tf" type="static_transform_publisher" name="tfodo" args="0 0 0 0 0 0 world raposang_odometry 100" /> -->
+	
+ <!--	<node pkg="rviz" type="rviz" name="rviz" /> -->
+	
+  <node name="rosbag_odo" pkg="rosbag" type="record" 
+     args="/kinect/depth_camera/pointcloud_color_compress /raposang/odometry_pose -O /backup/bag_pedro_4" /> 	
+	
+ </launch>

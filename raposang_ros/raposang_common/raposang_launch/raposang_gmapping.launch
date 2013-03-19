@@ -1,0 +1,34 @@
+<launch>
+
+  <param name="use_sim_time" value="false" />  
+
+  <node name="camera1394_node" pkg="camera1394" type="camera1394_node" respawn="false" >
+      <rosparam file="$(find camera1394)/firefly.yaml" />
+  </node>
+    
+  <node name="ar_pose" pkg="ar_pose" type="ar_single" respawn="false">
+    <remap from="/usb_cam/camera_info" to="/camera/camera_info" />
+    <remap from="/usb_cam/image_raw"   to="/camera/image_color" />	    
+	  <param name="marker_pattern"    type="string" value="data/4x4/4x4_83.patt"/>
+	  <param name="marker_width"      type="double" value="430.0"/>
+	  <param name="marker_center_x"   type="double" value="0.0"/>
+	  <param name="marker_center_y"   type="double" value="0.0"/>
+	  <param name="threshold"         type="int"    value="160"/>
+	  <param name="use_history"       type="bool"   value="true"/>
+	  <param name="reverse_transform" type="bool"   value="false"/>
+  </node> 
+
+  <node name="image_proc" pkg="image_proc" type="image_proc" ns="camera" respawn="false" />      
+
+  <node name="rosbag_arpose" pkg="rosbag" type="record"
+    args="/camera/camera_info /camera/image_color /ar_pose_marker -O ../bag_arpose" /> 
+
+  <machine name="raposang" address="raposang" user="raposang" 
+   default="true" password="raposa2011" ros-root="/opt/ros/electric/ros" 
+   ros-package-path="/home/raposang/raposang_ros:/opt/ros/electric/stacks" />	
+
+  <node name="rosbag_slam" pkg="rosbag" type="record"
+    args="/imu/data /bb2/triclops/left/image /raposang/odometry -O ../bag_slam" />   
+
+</launch>
+

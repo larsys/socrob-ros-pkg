@@ -1,0 +1,8 @@
+# This is a file, where the user should write all the topics, to which his application will subscribe.
+# Each topic should appear in a new line, and hypen+space should appear before it.
+# Example: - topic1
+topic_list:
+- /bb2/left/image_rect
+- /bb2/right/image_rect
+
+

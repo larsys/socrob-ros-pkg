@@ -1,0 +1,16 @@
+<package>
+  <description brief="raposang_launch">
+
+     raposang_launch
+
+  </description>
+  <author>Raposa</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/raposang_msg</url>
+  <depend package="sensor_msgs"/>
+  <depend package="geometry_msgs"/>
+  
+</package>
+
+

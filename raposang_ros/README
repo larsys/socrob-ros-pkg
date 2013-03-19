@@ -1,0 +1,18 @@
+-------------
+DEPENDENCIES:
+-------------
+
+*THIS IS FOR ROS FUERTE. CHANGE fuerte WITH YOUR CURRENT ROS DISTRIBUTION*
+
+FOR RAPOSANG_JOY: joystick_drivers
+
+	sudo apt-get install ros-fuerte-joystick-drivers
+
+TO USE MICROSTRAIN 3GMDX2: imu_drivers
+
+	sudo apt-get install ros-fuerte-imu-drivers
+
+TO USE KINECT: openni_kinect
+
+	sudo apt-get install ros-fuerte-openni-kinect
+

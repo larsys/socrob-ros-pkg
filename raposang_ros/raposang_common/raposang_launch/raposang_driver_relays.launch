@@ -1,0 +1,8 @@
+<launch>
+
+  <node pkg="raposang_driver" name="raposang_driver_relays" type="relays_node">
+    <param name="reads_per_second" 			type="int"			value="5" />
+    <param name="relays_port"  					type="string" 	value="/dev/ttyUSBrelays" />
+ 	</node> 	
+ 	
+</launch>

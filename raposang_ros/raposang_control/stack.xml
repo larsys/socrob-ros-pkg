@@ -1,0 +1,10 @@
+<stack>
+  <description brief="raposang_control">raposang_control</description>
+  <author>Maintained by SocRob Rescue</author>
+  <license>BSD</license>  
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/raposang_ros</url>
+  <depend stack="ros" />
+  <depend stack="raposang_common"/>
+
+</stack>
