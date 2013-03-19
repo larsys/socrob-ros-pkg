@@ -1,0 +1,16 @@
+<package>
+  <description brief="quad_control">
+
+     quad_control
+
+  </description>
+  <author>Henrique</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/quad_control</url>
+  <depend package="rospy"/>
+  <depend package="roscpp"/>
+
+</package>
+
+
