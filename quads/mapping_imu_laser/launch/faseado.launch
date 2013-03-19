@@ -8,7 +8,7 @@
 	<arg name="laser_topic_name" default ="/scan"/>
 	<arg name="laser_frame" default = "/laser0_frame"/>
 	
-	<arg name="bagname" default = "simulation3"/>
+	<arg name="bagname" default = "ver_se_da_tilt"/>
 	<param name="/use_sim_time" value="true"/>
 
 	<!--localization-->
@@ -65,7 +65,7 @@
 		</node>
 	
 	<!--replay-->
-	<node pkg="rosbag" type="play" name="rosbag" args=" $(find teste_leitura_pose)/data/$(arg bagname).bag -s 1 --clock"/>
+	<node pkg="rosbag" type="play" name="rosbag" args=" $(find mapping_imu_laser)/data/$(arg bagname).bag -s 1 --clock"/>
 
 	
 	
