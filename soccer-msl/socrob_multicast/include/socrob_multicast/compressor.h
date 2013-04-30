@@ -31,10 +31,30 @@ namespace socrob
 {
   namespace multicast
   {
+    /**
+     * @brief Base class to implement a compressor
+     *
+     * This class is a base class that can be used to implement a compressor
+     * that will filter all data to be sent and received from the multicast
+     * channel.
+     */
     class Compressor
     {
       public:
+        /**
+         * @brief Compress data
+         *
+         * This function sould compress a data vector in place.
+         * @param vec Vector to be compressed in place.
+         */
         virtual void compress (std::vector<uint8_t> & vec) {}
+        
+        /**
+         * @brief Decompress data
+         *
+         * This function should decompress a data vector in place.
+         * @param vec Vector to be decompressed in place.
+         */
         virtual void decompress (std::vector<uint8_t> & vec) {}
     };
   }
