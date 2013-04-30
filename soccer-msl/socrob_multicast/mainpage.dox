@@ -2,8 +2,15 @@
 \mainpage
 \htmlinclude manifest.html
 
-\b socrob_base 
+\b SocRobMulticast is a library to connect multiple ROS masters.
 
-This package contains SocRobMulticast, a library to connect multiple masters using ROS.
+To use this library, please refer to the API documentation of the @ref socrob::multicast::Manager class.
+
+@ref definitions.h contains the basic defenitions used in the library and @ref serialization.h contains helper
+functions to serialize data.
+
+Some examples can be found in the 'tests' directory in the package root.
+
+This library's theoretical basis is fully documented in my thesis, <a href="https://dspace.ist.utl.pt/bitstream/2295/1262185/1/dissertacao_jreis.pdf">Distributed Communications System for Multi-Robot Systems</a>.
 
 */
