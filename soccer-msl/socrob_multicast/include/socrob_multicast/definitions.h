@@ -31,12 +31,12 @@
 
 
 
-/// Uses the loopback interface. Use this only when testing offline!
+// Uses the loopback interface. Use this only when testing offline!
 //#define SOCROB_MULTICAST_USE_LOOPBACK_INTERFACE
 
 
 
-/// Sends long round packages at exact times, the worst case scenario.
+// Sends long round packages at exact times, the worst case scenario.
 //#define SOCROB_MULTICAST_LONG_SYNC_WORST
 
 
@@ -45,27 +45,53 @@ namespace socrob
 {
   namespace multicast
   {
+    /// Receive buffer size
     const std::size_t MAX_MESSAGE_SIZE = 65536;
     
+    
+    /// SID type (8 bits)
     typedef uint8_t id_type;
+    
+    /// QID type (32 bits)
     typedef uint32_t qid_type;
     
+    
+    /// Agent states
     typedef enum {NOT_RUNNING, INSERT, RUNNING, REMOVE} agent_state_type;
     
+    
+    /// Function type that receives a SID
     typedef boost::function<void (id_type) > id_function_type;
+    
+    /// Empty function of type id_function_type
     inline void empty_id_function (id_type) {}
     
+    
+    /// Function type that receives a buffer containing data or to be filled
     typedef boost::function<void (std::vector<uint8_t>&) > buffer_function_type;
+    
+    /// Empty function of type buffer_function_type
     inline void empty_buffer_function (std::vector<uint8_t> &) {}
     
+    
+    /// Function type that receives a SID and a buffer containing data or to be filled
     typedef boost::function<void (id_type, std::vector<uint8_t>&) > id_buffer_function_type;
+    
+    /// Empty function of type id_buffer_function_type
     inline void empty_id_buffer_function (id_type, std::vector<uint8_t> const&) {}
     
-    // First argument is the answer, last is the question.
+    
+    /// Function type for short round handlers, first argument is the answer, second is the SSID, last is the question.
     typedef boost::function<void (std::vector<uint8_t>&, id_type, std::vector<uint8_t>&) > handler_function_type;
+    
+    /// Empty function of type handler_function_type
     inline void empty_handler_function (std::vector<uint8_t>&, id_type, std::vector<uint8_t> const&) {}
     
+    
+    /// Function type for short round callbacks, receiving a map of SIDs to their answers
     typedef boost::function<void (std::map<id_type, std::vector<uint8_t> >&) > short_callback_type;
+    
+    /// Empty function of type short_callback_type
     inline void empty_short_callback (std::map<id_type, std::vector<uint8_t> >&) {}
   }
 }
