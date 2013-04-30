@@ -24,14 +24,14 @@ include_directories(include)
 
 
 # Library
+file(GLOB_RECURSE PROJECT_SOURCES src/*.cpp)
+rosbuild_add_library(${PROJECT_NAME} ${PROJECT_SOURCES})
+rosbuild_link_boost(${PROJECT_NAME} system thread)
 
 if(SOCROB_MULTICAST_USE_LOOPBACK_INTERFACE)
   set_property(TARGET ${PROJECT_NAME} APPEND PROPERTY COMPILE_DEFINITIONS SOCROB_MULTICAST_USE_LOOPBACK_INTERFACE=1)
 endif()
 
-file(GLOB_RECURSE PROJECT_SOURCES src/*.cpp)
-rosbuild_add_library(${PROJECT_NAME} ${PROJECT_SOURCES})
-rosbuild_link_boost(${PROJECT_NAME} system thread)
 
 
 # Tests
