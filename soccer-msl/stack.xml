@@ -11,4 +11,5 @@
   <review status="unreviewed" notes=""/>
   <url>http://socrob.isr.ist.utl.pt</url>
   <depend stack="ros"/>
+  <depend stack="ros_comm"/>
 </stack>
