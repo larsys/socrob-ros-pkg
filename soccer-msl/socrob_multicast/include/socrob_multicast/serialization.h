@@ -35,9 +35,13 @@ namespace socrob
   namespace multicast
   {
     /**
-     * Serializes a ROS message, appending the result to the given vector.
-     * @param out vector where the result will be appended.
-     * @param msg message to serialize.
+     * @brief Serializes a ROS message, appending the result to the given vector.
+     *
+     * Shortcut to use ROS serialization functions. This function can be used
+     * several times with the same vector to serialize a sequence of ROS
+     * messages.
+     * @param out Vector where the result will be appended.
+     * @param msg Message to serialize.
      */
     template<typename T>
     void
@@ -52,9 +56,13 @@ namespace socrob
     }
     
     /**
-     * Serializes a ROS message, overwritting the whole given vector.
-     * @param out vector where the result will be appended.
-     * @param msg message to serialize.
+     * @brief Serializes a ROS message, overwritting the whole given vector.
+     *
+     * This function is a optimization of serialize_append for when the vector
+     * is to be overwritten, not frequently needed in practice. Use this
+     * instead of cleaning the vector and then doing an append.
+     * @param out Vector where the result will be placed.
+     * @param msg Message to serialize.
      */
     template<typename T>
     void
@@ -68,11 +76,21 @@ namespace socrob
     }
     
     /**
-     * Deserializes a ROS message.
-     * @param msg resulting message.
-     * @param in vector containing the message.
-     * @param offset position in the vector where the serialized message starts, defaults to 0.
-     * @return size of the serialized message in the vector.
+     * @brief Deserializes a ROS message.
+     *
+     * Shortcut to use ROS deserialization functions. This function can be
+     * used simply like this:
+     * \code
+     * size_t offset = 0;
+     * std_msgs::Int32 var1;
+     * offset += deserialize (var1, serialized_vector, offset);
+     * std_msgs::Int32 var2;
+     * offset += deserialize (var2, serialized_vector, offset);
+     * \endcode
+     * @param msg Resulting message.
+     * @param in Vector containing the message.
+     * @param offset Position in the vector where the serialized message starts, defaults to 0.
+     * @return Size of the serialized message in the vector.
      */
     template<typename T>
     std::size_t

@@ -1,0 +1,17 @@
+<package>
+  <description brief="raposang_joy">
+
+     raposang_joy
+
+  </description>
+  <author>Raposa</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://raposa.isr.ist.utl.pt</url>
+  <depend package="roscpp"/>
+  <depend package="raposang_msgs"/>
+  <depend package="joy"/>
+
+</package>
+
+

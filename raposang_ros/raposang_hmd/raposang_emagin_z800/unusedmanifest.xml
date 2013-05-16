@@ -1,0 +1,23 @@
+<package>
+  <description brief="raposang_emagin_z800">
+
+     raposang_emagin_z800
+
+  </description>
+  <author>raposa</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/raposang_emagin_z800</url>
+  <depend package="roscpp"/>  
+  <depend package="sensor_msgs"/>
+  <depend package="geometry_msgs"/>
+  <depend package="tf"/>
+  <depend package="raposang_msgs"/>
+  <export>
+    <cpp cflags="-I${prefix}/libz800 -I${prefix}/math " lflags="-L${prefix}/lib -lz800 -lusb-1.0" />
+  </export>
+
+
+</package>
+
+

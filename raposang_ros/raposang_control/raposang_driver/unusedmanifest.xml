@@ -1,0 +1,15 @@
+<package>
+  <description brief="raposang_driver">
+
+     RAPOSA-NG drivers
+
+  </description>
+  <author>RAPOSA-NG team</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://raposa.isr.ist.utl.pt</url>
+  <depend package="roscpp"/>
+  <depend package="raposang_msgs"/>
+</package>
+
+

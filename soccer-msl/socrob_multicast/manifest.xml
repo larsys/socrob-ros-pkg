@@ -9,6 +9,7 @@
   <export>
     <cpp cflags="-I${prefix}/include"
          lflags="-L${prefix}/lib -Wl,-rpath,${prefix}/lib -lsocrob_multicast"/>
+    <rosdoc config="rosdoc.yaml"/>
   </export>
   <depend package="roscpp"/>
 </package>

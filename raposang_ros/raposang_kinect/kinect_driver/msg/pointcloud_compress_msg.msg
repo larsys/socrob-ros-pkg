@@ -1,0 +1,10 @@
+std_msgs/Header header
+uint16 width
+uint16 height
+uint64[] nan_points
+float32[] x
+float32[] y
+float32[] z
+uint8[] r
+uint8[] g
+uint8[] b

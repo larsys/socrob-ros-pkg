@@ -1,0 +1,20 @@
+ #!/bin/sh
+
+DIRS=`ls -l $MYDIR | egrep '^d' | awk '{print $8}'`
+
+for DIR in $DIRS
+do
+	cd ${DIR} 
+	SUB_DIRS=`ls -l $MYDIR | egrep '^d' | awk '{print $8}'`
+		for SUB_DIR in $SUB_DIRS
+		do
+			echo "[CLEAN_ALL] Entering ${DIR}/${SUB_DIR} ..."
+			cd ${SUB_DIR} 
+			make clean
+			rm -f -R bin
+			rm -f -R lib
+			echo "[CLEAN_ALL] Leaving ${DIR}/${SUB_DIR} ..."
+			cd ..
+		done		
+	cd ..
+done

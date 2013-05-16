@@ -1,0 +1,110 @@
+<launch>
+
+<!-- #################### -->
+<!-- Arguments for LAUNCH -->
+<!-- #################### -->
+
+  <arg name="use_sim_time"            default="false"/>
+
+  <arg name="use_ar_pose"             default="false"/>
+  <arg name="use_rosbag_arpose"       default="false"/>   
+  <arg name="use_rosbag_slam"         default="true"/>   
+  <arg name="slam_remote"             default="false"/>
+  <arg name="show_rviz"               default="false"/>
+  <arg name="show_monitor"            default="true"/>
+
+  <arg name="bag_arpose_name"         default="/home/filipejesus/bag_arpose.bag"/>  
+  <arg name="bag_slam_name"           default="/home/raposa/bags/bag_slam_4.bag"/>
+  <arg name="remote_machine_name"     default="raposang"/>
+  <arg name="remote_machine_user"     default="raposang"/>
+  <arg name="remote_machine_address"  default="raposang"/> 
+  <arg name="remote_machine_password" default="raposa2011"/>  
+
+<!-- ########################## -->
+<!-- RVIZ (Graphical Interface) -->
+<!-- ########################## -->
+
+  <group if="$(arg show_rviz)">
+    <node pkg="rviz" name="rviz" type="rviz" output="screen"
+      args="-d $(find raposang_launch)/raposang-slam.vcg"/>        
+  </group>
+
+  <group if="$(arg show_monitor)">
+    <node pkg="raposang_slam" name="raposang_slam_monitor" type="monitor.py" output="screen" />    
+    <node pkg="image_view" name="image_view_slam" type="image_view" >  
+      <remap from="image" to="/raposang_slam/image_data" />
+    </node>    
+  </group>
+
+
+<!-- ################ -->
+<!-- ROS-Bag Playback -->
+<!-- ################ -->
+
+  <group if="$(arg use_rosbag_arpose)">
+    <node name="rosbag_arpose_play" pkg="rosbag" type="play"
+      args="$(arg bag_arpose_name)" >
+    </node>
+  </group>  
+  
+  <group if="$(arg use_rosbag_slam)">      
+    <node name="rosbag_slam_play" pkg="rosbag" type="play" output="screen"
+      args="$(arg bag_slam_name)" >
+    </node>
+  </group>  
+
+<!-- ##################### -->
+<!-- AR-POSE (Groundtruth) -->
+<!-- ##################### -->
+
+  <group if="$(arg use_ar_pose)">
+    <node pkg="raposang_groundtruth" type="raposang_groundtruth_node" name="raposang_groundtruth"/>   
+    <node pkg="raposang_groundtruth" type="raposang_groundtruth1_node" name="raposang_groundtruth1"/> 
+
+    <group unless="$(arg use_rosbag_arpose)">      
+
+	    <node name="ar_pose" pkg="ar_pose" type="ar_single" respawn="false">
+	      <remap from="/usb_cam/camera_info" to="/camera/camera_info" />
+        <remap from="/usb_cam/image_raw"   to="/camera/image_color" />	    
+		    <param name="marker_pattern"    type="string" value="data/4x4/4x4_83.patt"/>
+		    <param name="marker_width"      type="double" value="430.0"/>
+		    <param name="marker_center_x"   type="double" value="0.0"/>
+		    <param name="marker_center_y"   type="double" value="0.0"/>
+		    <param name="threshold"         type="int"    value="160"/>
+		    <param name="use_history"       type="bool"   value="true"/>
+		    <param name="reverse_transform" type="bool"   value="false"/>
+      </node> 
+
+<!-- ##################### -->
+<!-- PTGrey Firefly Camera -->
+<!-- ##################### -->
+	
+      <node name="camera1394_node" pkg="camera1394" type="camera1394_node" respawn="false" >
+          <rosparam file="$(find camera1394)/firefly.yaml" />
+      </node> 
+
+      <node name="image_proc" pkg="image_proc" type="image_proc" ns="camera" respawn="false" />      
+    
+    </group>      
+  </group>  
+
+  
+<!-- ########################## -->
+<!-- Remote Connection for SLAM -->
+<!-- ########################## -->  
+  
+  <group if="$(arg slam_remote)">
+    <machine name="$(arg remote_machine_name)" address="$(arg remote_machine_address)" user="$(arg remote_machine_user)" 
+      default="true" password="$(arg remote_machine_password)" ros-root="/opt/ros/electric/ros" 
+      ros-package-path="/home/raposang/raposang_ros:/opt/ros/electric/stacks" />	    
+  </group>
+
+
+<!-- ############## -->
+<!-- SLAM Algorithm -->
+<!-- ############## -->  
+  
+	<include file="$(find raposang_launch)/raposang_slam.launch" ns="raposang_slam" /> 
+ 
+</launch>
+
