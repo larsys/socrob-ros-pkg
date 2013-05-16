@@ -1,0 +1,4 @@
+#! /usr/bin/python
+import monitor
+monitor.Viewer().main()
+# EOF

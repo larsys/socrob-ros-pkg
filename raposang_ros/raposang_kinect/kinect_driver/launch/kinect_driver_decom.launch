@@ -1,0 +1,12 @@
+<launch>
+
+	<group ns="kinect">
+		
+		<node pkg="kinect_driver" name="pointcloud_decompressor" type="pointcloud_decompressor_node" required="true" output="screen">
+			<remap from="pointcloud_compress" to="depth_camera/pointcloud_color_compress" />
+			<remap from="pointcloud_decompress" to="depth_camera/pointcloud_color_decompress" />
+		</node> 
+ 
+	</group>
+	
+</launch>

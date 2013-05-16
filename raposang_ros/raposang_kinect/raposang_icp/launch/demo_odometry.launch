@@ -1,0 +1,41 @@
+<launch>
+	
+<!-- DEMO
+	sel = 0 - Make Map using icp
+	sel = 1 - Make Map using icp pl2pl
+-->
+		
+	<node pkg="raposang_icp" name="demo_with_odometry" type="demo_with_odometry" output="screen">
+		<param name="sel" value="1" type="int" />
+		
+		<!--DEMO Threshold-->
+		<param name="filter"              value="true"       type="bool"/>
+		<param name="leaf_size"			  value="0.02"  	 type="double" />   <!--2cm-->
+		<param name="useicp"              value="true"       type="bool"/>
+		<param name="features_th"         value="6000"       type="int" />
+		<param name="cloud_points_min"    value="25000"      type="int" />
+		<param name="b_size"              value="200"        type="int" />
+		
+		<!--ICP INIT-->
+		<param name="th"   value="0.0001" type="double" />
+		<param name="prob" value="0.999"  type="double" />
+		
+		<!--ICP-->
+		<param name="D"					value="0.05" 	type="double" />		<!--5cm-->
+		<param name="Dmax_c"			value="20.0" 	type="double" />
+		<param name="max_iterations" 	value="50"	 	type="int"    />		
+		<param name="THRESH_dr" 		value="0.5" 	type="double" />		<!--0.5 degrees-->
+		<param name="THRESH_dt" 		value="0.002" 	type="double" />		<!--2mm meter 4mm para pl2pl-->
+		<param name="MAXPAIRS" 			value="7000" 	type="int"    />		
+		<param name="MINPAIRS"			value="5000" 	type="int"    />
+			
+		<!--ICP pl2pl-->
+		<param name="gicp_epsilon"		value="0.0004" 	type="double" />	
+		<param name="k_correspondences" value="20" 		type="int"   />		
+		
+		<param name="pointcloudtopic"   value="/kinect/depth_camera/pointcloud_color_decompress" type="str" />	
+		<param name="odometrytopic"     value="/raposang/odometry_pose" type="str" />	
+	</node>
+	
+	
+</launch>

@@ -1,0 +1,64 @@
+<!-- LAUNCH FILE USED TO CONTROL RAPOSA REMOTELY -->
+
+<launch>
+
+  <arg name="RAPOSANG_DEMO_USE_VIRTUAL_PANTILT" type="bool" value="false" />
+  <arg name="RAPOSANG_DEMO_RESIZING_FACTOR" type="double" value="1.5" />
+  
+	<!-- OPERATE RAPOSA-NG WITH JOYPAD -->
+
+	<include file="$(find raposang_launch)/raposang_joy.launch" ns="raposang_control_wireless" />
+
+	<!-- WRAP920 CONTROL -->
+			
+	<node pkg="raposang_wrap920" name="raposang_wrap920_driver" type="raposang_wrap920_node" output="screen" >
+		<remap from="output_pan"  to="servo_pan"/>		
+		<remap from="output_tilt" to="servo_tilt"/>				
+	</node>				
+		
+	<!-- IMAGE REPUBLISHERS -->
+	
+  <node name="republish_left" type="republish" pkg="image_transport" output="screen" 
+        args="compressed in:=/bb2/left_for_video  raw out:=leftCameraTopic" />
+
+  <node name="republish_right" type="republish" pkg="image_transport" output="screen" 
+				args="compressed in:=/bb2/right_for_video raw out:=rightCameraTopic" />  
+
+	<!-- USER INTERFACE -->
+
+	<node name="myVideoImageSubscriber" pkg="raposang_gui" type="myVideoImageSubscriber" >
+			<remap from="leftCameraTopic"  to="/v_pantilt/left" if="$(arg RAPOSANG_DEMO_USE_VIRTUAL_PANTILT)" />		
+			<remap from="rightCameraTopic"  to="/v_pantilt/right" if="$(arg RAPOSANG_DEMO_USE_VIRTUAL_PANTILT)" />					
+		  <param name="resizing_factor" value="$(arg RAPOSANG_DEMO_RESIZING_FACTOR)" type="double"                                       /> 
+	</node>
+	
+	<node pkg="raposang_gui" name="raposang_client_telemetry" type="imu_telemetry" /> 
+	
+	<!-- VIRTUAL PAN&TILT -->
+
+  <group if="$(arg RAPOSANG_DEMO_USE_VIRTUAL_PANTILT)">		
+		<node name="virtual_pantilt" pkg="raposang_v_pantilt" type="virtual_pantilt" output="screen">
+			<remap from="/monitor/rpy" to="wrap920_rpy" />			
+			<param name="resizing_factor" 									value="$(arg RAPOSANG_DEMO_RESIZING_FACTOR)" type="double" />   
+			<param name="virtual_pantilt" 									value="1" type="int" />   			
+			<param name="pitch_active_mode_upperbound"      value="6"         type="double" /> 
+			<param name="pitch_active_mode_lowerbound"      value="-6"        type="double" /> 
+			<param name="pitch_deactive_mode_upperbound"    value="3"         type="double" /> 
+			<param name="pitch_deactive_mode_lowerbound"    value="-3"        type="double" /> 
+			<param name="yaw_active_mode_upperbound"        value="20"         type="double" /> 
+			<param name="yaw_active_mode_lowerbound"        value="-20"        type="double" /> 
+			<param name="yaw_deactive_mode_upperbound"      value="5"         type="double" /> 
+			<param name="yaw_deactive_mode_lowerbound"      value="-5"        type="double" /> 
+			<param name="k_pan"                             value="16"          type="double" /> 
+			<param name="k_tilt"                            value="16"          type="double" /> 
+			<param name="max_pan_v"                         value="80"         type="double" /> 
+			<param name="min_pan_v"                         value="-80"        type="double"/> 
+			<param name="max_tilt_v"                      value="80"         type="double" /> 
+			<param name="min_tilt_v"                      value="-80"        type="double" /> 
+			<param name="filter_wsize"                      value="12"        type="double" />			
+		</node> 					
+	</group>
+
+
+</launch>
+
