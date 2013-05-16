@@ -9,6 +9,7 @@
   <review status="unreviewed" notes=""/>
   <url>http://ros.org/wiki/imu_parser</url>
   <depend package="sensor_msgs"/>
+  <depend package="geometry_msgs"/>
   <depend package="tf"/>
   <depend package="roscpp"/>
   <depend package="rospy"/>

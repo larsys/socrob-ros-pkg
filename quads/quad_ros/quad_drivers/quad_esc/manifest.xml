@@ -1,0 +1,16 @@
+<package>
+  <description brief="quad_esc">
+
+     quad_esc
+
+  </description>
+  <author>Henrique</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/quad_esc</url>
+  <depend package="rospy"/>
+  <depend package="roscpp"/>
+
+</package>
+
+

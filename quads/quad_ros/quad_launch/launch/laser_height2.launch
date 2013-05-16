@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+
+<launch>
+
+	<node pkg="quad_link" type="quad_link" name="quad_link" output="screen"/>
+	
+	<include file="$(find imu_parser)/launch/imu_parser.launch"/>
+	
+	<node pkg="quad_status" type="quad_status" name="quad_status" output="screen"/>
+
+	<include file="$(find quad_urdf)/launch/quad_urdf_only.launch"/>
+	
+	<node pkg="rviz" type="rviz" name="rviz" respawn="true" args="-d /home/quadbase/ros/quad_ros/quad_launch/rviz_cfg/height.vcg"/>
+	
+	<node pkg="tf" type="static_transform_publisher" name="base_2_laser_broadcast" args="0 0 0.0 0 0 0 base_link laser 100" />
+	
+	<node pkg="tf" type="static_transform_publisher" name="base_2_laserLeft_broadcast" args="-0.04598 0.09576 0.0 0.475534125170103 -0.523598775598299 -1.57079632679 laser laserLeft 100" />
+
+	<node pkg="tf" type="static_transform_publisher" name="base_2_laserRight_broadcast" args="-0.04598 -0.09576 0.0 -0.4538 -0.4538 1.57079632679 laser laserRight 100" />
+
+<!--
+	-1.57079632679    0.5236
+-->
+<!--
+		<node pkg="tf" type="static_transform_publisher" name="base_2_laserLeft_broadcast" args="-0.04598 0.09576 0.0 0.453785605518526 -0.5236 -1.57079632679 laser laserLeft 100" />
+-->
+	
+	<include file="$(find hokuyo_node)/hokuyo.launch"/>
+	
+	<node pkg="laser_scan_splitter" type="laser_scan_splitter_node" name="splitter" output="screen">
+		<param name="sizes" value="14 653 14"/>
+		<param name="topics" value="scanRight scanCenter scanLeft"/>
+		<param name="frames" value="laserRight laser laserLeft"/>
+	</node>
+	
+	<node pkg="laser_height_estimation" type="laser_height_estimation_node" name="laser_height_estimation_node" output="screen" respawn="true">
+
+		<remap from="/scan" to="/scanLeft"/>
+
+		<param name="fixed_frame"     value="/map"/>
+		<param name="base_frame"      value="/base_link"/>
+		<param name="footprint_frame" value="/base_footprint"/>
+
+		<param name="max_height_jump" value="0.7"/>
+		<param name="max_stdev"       value="0.03"/>
+		<param name="min_values"      value="5"/>
+		<param name="bin_size"        value="0.05"/>
+
+		<param name="use_imu"         value="true"/>
+		<param name="use_segmentation" value="true"/>
+
+	</node>
+	
+</launch>
+
+

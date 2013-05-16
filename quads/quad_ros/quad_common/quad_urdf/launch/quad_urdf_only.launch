@@ -2,9 +2,11 @@
 
   <param name="robot_description" command="cat $(find quad_urdf)/descriptors/quad.xml" />
   
-	<node pkg="message_to_tf" type="message_to_tf" name="robot_state_tf" respawn="true">
+	<node pkg="message_pub_tf" type="message_pub_tf" name="robot_state_tf" respawn="true">
 		<param name="imu_topic"	value="/imu/data" /> 
 	</node>
-	<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" >
+		<param name="publish_frequency" value="100.0"/>
+	</node>
 
 </launch>

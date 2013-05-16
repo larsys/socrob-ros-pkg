@@ -10,7 +10,7 @@
 
 quad_status::Status status;
 ros::Publisher status_message;
-float batt_limit=11.4;
+float batt_limit=11.0;
 
 /* 
  * Broadcast Status information of quadrotor

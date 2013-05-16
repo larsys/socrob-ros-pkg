@@ -1,0 +1,16 @@
+<package>
+  <description brief="quad_can_driver">
+
+     quad_can_driver
+
+  </description>
+  <author>Henrique</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/quad_can_driver</url>
+  <depend package="rospy"/>
+  <depend package="roscpp"/>
+
+</package>
+
+

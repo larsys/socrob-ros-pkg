@@ -15,6 +15,8 @@ sensor_msgs/Imu.h
 -
 std_msgs/String.h
 -
+geometry_msgs/Vector3Stamped.h
+-
 stdio.h
 -
 math.h
@@ -26,6 +28,8 @@ Ivy/ivy.h
 Ivy/ivyloop.h
 -
 tf/tf.h
+-
+Ivy/timer.h
 -
 
 /opt/ros/fuerte/include/XmlRpcDecl.h

@@ -1,0 +1,14 @@
+<package>
+  <description brief="quad_launch">
+
+     quad_launch
+
+  </description>
+  <author>quad</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/quad_launch</url>
+
+</package>
+
+

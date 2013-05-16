@@ -22,8 +22,8 @@ int ac_id, period;
 
 void SettingCallback (TimerId id, void *user_data, unsigned long delta)
 {
-	IvySendMsg ("ground_dl SETTING 0 %d 3",ac_id); // Telemetry -> Scaled
-	IvySendMsg ("ground_dl SETTING 1 %d 6",ac_id); // Mode2 -> AP_MODE_ATTITUDE_CLIMB
+	IvySendMsg ("ground_dl SETTING 0 %d 0",ac_id); // Telemetry -> Default
+	IvySendMsg ("ground_dl SETTING 1 %d 3",ac_id); // Mode2 -> AP_MODE_ATTITUDE_DIRECT
 	IvySendMsg ("ground_dl SETTING 2 %d 3",ac_id); // Mode1 -> AP_MODE_ATTITUDE_DIRECT
 	IvySendMsg ("ground_dl SETTING 65 %d 0",ac_id); // Care_Free -> OFF
 	

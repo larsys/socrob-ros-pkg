@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<launch>
+	
+	<node pkg="quad_link" type="quad_link" name="quad_link" output="screen"/>
+	
+	<include file="$(find telemetry_settings)/launch/telemetry_settings.launch"/>
+	
+	<include file="$(find imu_parser)/launch/imu_parser.launch"/>
+	
+	<include file="$(find quad_urdf)/launch/quad_urdf_only.launch"/>
+
+	<node pkg="rviz" type="rviz" name="rviz" respawn="true" args="-d /home/quadbase/ros/quad_ros/quad_launch/rviz_cfg/att.vcg"/>
+	
+	<node pkg="quad_status" type="quad_status" name="quad_status" output="screen"/>
+		
+</launch>

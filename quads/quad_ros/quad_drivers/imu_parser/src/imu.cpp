@@ -2,6 +2,7 @@
 #include <string.h>
 #include <sensor_msgs/Imu.h>
 #include <std_msgs/String.h>
+#include <geometry_msgs/Vector3Stamped.h>
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
@@ -13,7 +14,9 @@
 #define DEG2RAD 3.14159265359/180
 
 ros::Publisher imu_message;
+ros::Publisher mag_message;
 sensor_msgs::Imu imu_data;
+geometry_msgs::Vector3Stamped mag_data;
 tf::Quaternion q;
 
 /* 
@@ -30,9 +33,9 @@ void ATTCallback (IvyClientPtr app, void* data , int argc, char **argv)
 	double phi, theta, yaw;
 		
 	sscanf(argv[0],"%lf %lf %lf %*d %*d %*d",&phi,&theta,&yaw);
-	phi*=-att_unit_coef*DEG2RAD;
-	theta*=att_unit_coef*DEG2RAD;
-	yaw*=att_unit_coef*DEG2RAD;
+	phi*=att_unit_coef*DEG2RAD;
+	theta*=-att_unit_coef*DEG2RAD;
+	yaw*=-att_unit_coef*DEG2RAD;
 	
 	q.setRPY(phi,theta,yaw);
 
@@ -67,11 +70,23 @@ void ACCELCallback (IvyClientPtr app, void* data , int argc, char **argv)
 	
 	sscanf(argv[0],"%lf %lf %lf",&imu_data.linear_acceleration.x,&imu_data.linear_acceleration.y,&imu_data.linear_acceleration.z);
 	imu_data.linear_acceleration.x*=-acc_unit_coef;
-	imu_data.linear_acceleration.y*=acc_unit_coef;
-	imu_data.linear_acceleration.z*=acc_unit_coef;
+	imu_data.linear_acceleration.y*=-acc_unit_coef;
+	imu_data.linear_acceleration.z*=-acc_unit_coef;
 	
 	imu_data.header.stamp = ros::Time::now();
 	imu_message.publish(imu_data);
+}
+void MAGCallback (IvyClientPtr app, void* data , int argc, char **argv)
+{
+	double mag_unit_coef= 0.0004883;
+	
+	sscanf(argv[0],"%lf %lf %lf",&mag_data.vector.x,&mag_data.vector.y,&mag_data.vector.z);
+	mag_data.vector.x*=mag_unit_coef;
+	mag_data.vector.y*=mag_unit_coef;
+	mag_data.vector.z*=mag_unit_coef;
+	
+	mag_data.header.stamp = ros::Time::now();
+	mag_message.publish(mag_data);
 }
 
 void ROSCallback (TimerId id, void *user_data, unsigned long delta) 
@@ -93,11 +108,13 @@ int main(int argc, char **argv)
 	ros::init(argc, argv, "imu");
 	ros::NodeHandle nh("~");
 	
-	imu_message = nh.advertise<sensor_msgs::Imu>("data", 1000);
+	imu_message = nh.advertise<sensor_msgs::Imu>("data", 10);
+	mag_message = nh.advertise<geometry_msgs::Vector3Stamped>("mag", 10);
 	
 	// Getting Parameters
 	nh.param<std::string>("frame_id", frame_id, "imu");
     imu_data.header.frame_id = frame_id;
+    mag_data.header.frame_id = frame_id;
 
     nh.param("linear_acceleration_stdev", linear_acceleration_stdev, 0.0); 
     nh.param("orientation_stdev", orientation_stdev, 0.0); 
@@ -129,6 +146,7 @@ int main(int argc, char **argv)
 	IvyBindMsg(ATTCallback, 0, "BOOZ2_AHRS_EULER(.*)");
 	IvyBindMsg(GYROCallback, 0, "IMU_GYRO_SCALED(.*)");
 	IvyBindMsg(ACCELCallback, 0, "IMU_ACCEL_SCALED(.*)");
+	IvyBindMsg(MAGCallback, 0, "IMU_MAG_SCALED(.*)");
 	
 	ROS_INFO("IMU: Starting Aquisition Loop");
 
