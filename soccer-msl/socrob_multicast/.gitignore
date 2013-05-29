@@ -1,0 +1,14 @@
+**/*~
+**/*.orig
+CMakeFiles
+CMakeCache.txt
+cmake_install.cmake
+socrob_multicast.kdev4
+.kdev4
+.kdev_include_paths
+bin
+build
+lib
+msg_gen
+srv_gen
+src/socrob_multicast
