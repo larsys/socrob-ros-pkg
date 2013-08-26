@@ -1,0 +1,21 @@
+%YAML:1.0
+image_width: 640
+image_height: 480
+camera_name: depth
+camera_matrix: !!opencv-matrix
+  rows: 3
+  cols: 3
+  data: [567.134797, 0, 332.305232, 0, 567.69074, 246.214483, 0, 0, 1]
+distortion_model: plumb_bob
+distortion_coefficients: !!opencv-matrix
+  rows: 1
+  cols: 5
+  data: [-0.042391, 0.045829, -0.000209, 0.002836, 0]
+rectification_matrix: !!opencv-matrix
+  rows: 3
+  cols: 3
+  data: [1, 0, 0, 0, 1, 0, 0, 0, 1]
+projection_matrix: !!opencv-matrix
+  rows: 3
+  cols: 4
+  data: [560.962341, 0, 333.460886, 0, 0, 563.199768, 245.690931, 0, 0, 0, 1, 0]

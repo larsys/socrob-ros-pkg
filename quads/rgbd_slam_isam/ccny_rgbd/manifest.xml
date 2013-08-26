@@ -1,0 +1,37 @@
+<package>
+  <description brief="ccny_rgbd">
+
+     Ros applications for fast visual odometry and mapping from RGB-D data, built on top of the rgbdtools library.
+
+  </description>
+  <author>Ivan Dryanovski</author>
+  <license>GPL</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/ccny_rgbd</url>
+  <depend package="roscpp"/>
+  <depend package="pcl"/>
+  <depend package="pcl_ros"/>
+  <depend package="nav_msgs"/>
+  <depend package="std_srvs"/>
+  <depend package="tf"/>
+  <depend package="dynamic_reconfigure"/>
+  <depend package="cv_bridge"/>
+  <depend package="sensor_msgs"/>
+  <depend package="geometry_msgs"/>
+  <depend package="visualization_msgs"/>
+  <depend package="image_transport"/>
+  <depend package="image_geometry"/>
+  <depend package="nodelet"/>
+  <depend package="lib_rgbdtools"/>
+  <depend package="ccny_g2o"/>  
+  <depend package="tf_conversions"/>    
+  <rosdep name="octomap" />
+
+  <export>
+    <cpp cflags="-I${prefix}/include -I${prefix}/cfg/cpp" lflags="-L${prefix}/lib/ -Wl,-rpath,${prefix}/lib -lros"/>
+    <nodelet plugin="${prefix}/nodelets/rgbd_image_proc_nodelet.xml" />
+  </export>
+
+</package>
+
+

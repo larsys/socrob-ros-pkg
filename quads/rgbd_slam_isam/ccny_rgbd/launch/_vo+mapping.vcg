@@ -1,0 +1,77 @@
+Background\ ColorB=0.215686
+Background\ ColorG=0
+Background\ ColorR=0
+Camera\ Config=0.465399 3.17539 6.62804 0 0 0
+Camera\ Type=rviz::OrbitViewController
+Fixed\ Frame=/odom
+Image.Enabled=1
+Image.Image\ Topic=/camera/rgb/image_mono
+Image.Queue\ Size=2
+Image.Transport\ Hint=raw
+Marker.Enabled=1
+Marker.Marker\ Topic=/keyframe_associations
+Marker.Queue\ Size=100
+Marker2.Enabled=1
+Marker2.Marker\ Topic=/keyframe_poses
+Marker2.Queue\ Size=100
+Path.Alpha=1
+Path.ColorB=0
+Path.ColorG=1
+Path.ColorR=0.1
+Path.Enabled=1
+Path.Topic=/mapper_path
+Pose.Alpha=1
+Pose.ColorB=0
+Pose.ColorG=0.1
+Pose.ColorR=1
+Pose.Enabled=1
+Pose.Head\ Length=0.3
+Pose.Head\ Radius=0.2
+Pose.Shaft\ Length=1
+Pose.Shaft\ Radius=0.1
+Pose.Shape=0
+Pose.Topic=/pose
+Property\ Grid\ Splitter=217,78
+Property\ Grid\ State=expanded=.Global Options;splitterratio=0.614108
+QMainWindow=000000ff00000000fd00000004000000000000013600000363fc0200000007fb0000001000520047004200200052006500630074000000002c000001020000000000000000fb0000000a0049006d006100670065010000001d0000010d0000001900fffffffb000000100044006900730070006c006100790073010000013000000179000000ee00fffffffb0000000a0056006900650077007301000002af000000d1000000bb00fffffffb0000000c00540065006c0065006f007000000002da000000aa0000000000000000fb000000040049005200000002e4000000ca0000000000000000fb0000000c00430061006d006500720061000000028b000000ad000000000000000000000001000002bb00000382fc0200000002fb0000001e0054006f006f006c002000500072006f0070006500720074006900650073000000002c0000009c0000006700fffffffb0000001200530065006c0065006300740069006f006e000000032a000000840000006700ffffff00000002000003de00000125fc0100000002fb0000000600520047004200000001e0000001f20000000000000000fb0000000c0049006d00610067006500320000000000000004fa000000000000000000000003000003470000003efc0100000001fc00000000000003470000000000fffffffa000000000200000002fb0000000c0049006d00610067006500330000000000ffffffff0000000000000000fb0000000800540069006d006500000003b80000003e0000003e00ffffff000001c30000036300000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+TF.All\ Enabled=0
+TF.Enabled=1
+TF.Frame\ Timeout=15
+TF.Marker\ Scale=1
+TF.Show\ Arrows=0
+TF.Show\ Axes=1
+TF.Show\ Names=0
+TF.Update\ Interval=0
+Target\ Frame=<Fixed Frame>
+Tool\ 2D\ Nav\ GoalTopic=/move_base_simple/goal
+Tool\ 2D\ Pose\ EstimateTopic=initialpose
+[Display0]
+ClassName=rviz::TFDisplay
+Name=TF
+[Display1]
+ClassName=rviz::PathDisplay
+Name=Path
+[Display2]
+ClassName=rviz::MarkerDisplay
+Name=Marker
+[Display3]
+ClassName=rviz::MarkerDisplay
+Name=Marker2
+[Display4]
+ClassName=rviz::PoseDisplay
+Name=Pose
+[Display5]
+ClassName=rviz::ImageDisplay
+Name=Image
+[TF.Frames.]
+camera_depth_frame.Enabled=1
+camera_depth_optical_frame.Enabled=1
+camera_link.Enabled=1
+camera_rgb_frame.Enabled=1
+camera_rgb_optical_frame.Enabled=1
+odom.Enabled=1
+[Window]
+Height=932
+Width=783
+X=633
+Y=0
