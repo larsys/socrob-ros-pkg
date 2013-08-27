@@ -1,3 +1,10 @@
+3D SLAM using a RGB-D Sensor
+iSAM used for incremental solving
+
+
+
+Original readme bellow:
+
 CCNY RGB-D tools 
 ===================================
 
