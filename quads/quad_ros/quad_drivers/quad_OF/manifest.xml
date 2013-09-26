@@ -1,0 +1,18 @@
+<package>
+  <description brief="quad_OF">
+
+     quad_OF
+
+  </description>
+  <author>Henrique</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/quad_OF</url>
+  <depend package="roscpp"/>
+  <depend package="geometry_msgs"/>
+  <depend package="mav_msgs"/>
+  <depend package="tf"/>
+
+</package>
+
+

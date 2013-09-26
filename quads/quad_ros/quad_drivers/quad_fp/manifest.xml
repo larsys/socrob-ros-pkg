@@ -1,0 +1,16 @@
+<package>
+  <description brief="quad_fp">
+
+     quad_fp
+
+  </description>
+  <author>Henrique</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/quad_status</url>
+  <depend package="roscpp"/>
+  <depend package="quad_can_driver"/>
+
+</package>
+
+

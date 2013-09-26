@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+
+<launch>
+	
+	<node pkg="quad_link" type="quad_link" name="quad_link" output="screen" respawn="true"/>
+		
+</launch>
