@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+
+<launch>
+	<node pkg="quad_motors" type="quad_motors" name="quad_motors" respawn="true" output="screen">
+		<param name="ac_id" value="2" />
+	</node>
+</launch>

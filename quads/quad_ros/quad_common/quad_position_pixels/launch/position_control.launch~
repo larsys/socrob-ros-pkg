@@ -1,0 +1,6 @@
+<launch>
+	<node pkg="quad_position_pixels" type="control" name="position_control_pixels" output="screen" >
+		<param name="K" value="0.002" />
+		<param name="pixels_topic_subscribe" value="/camera_pose_aruco/pixel_disp" />
+	</node>
+</launch>

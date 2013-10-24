@@ -1,0 +1,21 @@
+<package>
+  <description brief="camera_pose_aruco">
+
+     camera_pose_aruco
+
+  </description>
+  <author>tcarreira</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/camera_pose_aruco</url>
+  <depend package="image_transport"/>
+  <depend package="opencv2"/>
+  <depend package="roscpp"/>
+  <depend package="cv_bridge"/>
+  <depend package="std_msgs"/>
+  <depend package="geometry_msgs"/>
+  <depend package="tf"/>
+
+</package>
+
+

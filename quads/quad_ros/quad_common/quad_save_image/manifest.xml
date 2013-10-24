@@ -1,0 +1,20 @@
+<package>
+  <description brief="quad_save_image">
+
+     quad_save_image
+
+  </description>
+  <author>quad</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/quad_save_image</url>
+  <depend package="sensor_msgs"/>
+  <depend package="opencv2"/>
+  <depend package="cv_bridge"/>
+  <depend package="roscpp"/>
+  <depend package="std_msgs"/>
+  <depend package="image_transport"/>
+  <depend package="std_srvs"/>
+</package>
+
+

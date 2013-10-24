@@ -1,0 +1,18 @@
+<package>
+  <description brief="quad_position_pixels">
+
+     quad_position_pixels
+
+  </description>
+  <author>tcarreira</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/quad_position_pixels</url>
+  <depend package="roscpp"/>
+  <depend package="std_msgs"/>
+  <depend package="quad_can_driver"/>
+  <depend package="quad_can_driver"/>
+
+</package>
+
+

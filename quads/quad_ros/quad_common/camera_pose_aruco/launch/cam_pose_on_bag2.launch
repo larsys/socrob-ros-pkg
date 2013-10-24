@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+
+<launch>
+	
+      <!--  <node pkg="usb_cam" type="usb_cam_node" name="quad_cam" output="screen" respawn="true" >
+		<param name="video_device" value="/dev/video1" />
+	</node>
+-->
+    <node pkg="rosbag" type="play" name="replay_img" args="$(find camera_pose_aruco)/bag/cam_trial2.bag -l" />
+
+
+        <node pkg="camera_pose_aruco" type="camera_pose_aruco" name="camera_pose_aruco" output="screen" required="true" >
+            <param name="markers_config_file" value="$(find camera_pose_aruco)/markers_sizes_aruco.txt" />
+            <param name="camara_calib_file" value="$(find camera_pose_aruco)/cam_parameters_aruco.txt" />
+            <param name="image" value="/usb_cam/image_raw" />
+        </node>
+
+        <node pkg="image_view" type="image_view" name="processed" respawn="true" >
+            <param name="image" value="/camera_pose_aruco/image_processed" />
+        </node>
+        <node pkg="image_view" type="image_view" name="quad_cam" respawn="true" >
+            <param name="image" value="/usb_cam/image_raw" />
+        </node>
+
+    <node pkg="rviz" type="rviz" name="rviz" respawn="false" args="-d $(find camera_pose_aruco)/launch/rviz_show_cam_only_mean.vcg" />
+    <node pkg="rxtools" type="rxplot" name="plot_z" args="/camera_pose_aruco/pose_cam/pose/position/z" />
+	
+	
+</launch>

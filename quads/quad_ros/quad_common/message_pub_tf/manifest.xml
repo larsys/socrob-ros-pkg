@@ -1,0 +1,20 @@
+<package>
+  <description brief="message_pub_tf translates pose information from different kind of message types to tf.">
+
+     message_pub_tf translates pose information from different kind of common_msgs message types to tf.
+
+  </description>
+  <author>Johannes Meyer and Henrique Silva</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/message_pub_tf</url>
+
+  <depend package="tf"/>
+  <depend package="nav_msgs"/>
+  <depend package="geometry_msgs"/>
+  <depend package="sensor_msgs"/>
+  <depend package="mav_msgs"/>
+
+</package>
+
+
