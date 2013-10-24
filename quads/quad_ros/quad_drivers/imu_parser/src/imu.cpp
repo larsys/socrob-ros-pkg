@@ -14,7 +14,7 @@
 #define DEG2RAD 3.14159265359/180
 
 ros::Publisher imu_message, mag_message, acc_message, att_message;
-//ros::Publisher mag_message;
+
 sensor_msgs::Imu imu_data, att_data;
 geometry_msgs::Vector3Stamped mag_data, acc_data;
 tf::Quaternion q;
@@ -38,6 +38,9 @@ void ATTCallback (IvyClientPtr app, void* data , int argc, char **argv)
 	yaw*=-att_unit_coef*DEG2RAD;
 	
 	q.setRPY(phi,theta,yaw);
+	
+	//ROS_INFO("Phi %f; Theta %f; Yaw %f", phi,theta,yaw);
+	//ROS_INFO("q1 %f; q2 %f; q3 %f; q4 %f", q.x(),q.y(),q.z(),q.w());
 
 	imu_data.header.stamp = ros::Time::now();
 	imu_data.orientation.x=q.x();
@@ -45,15 +48,15 @@ void ATTCallback (IvyClientPtr app, void* data , int argc, char **argv)
 	imu_data.orientation.z=q.z();
 	imu_data.orientation.w=q.w();
 	
+	imu_message.publish(imu_data);
+	
+	//Only temporary until the rates are equal
 	att_data.header.stamp = ros::Time::now();
 	att_data.orientation.x=q.x();
 	att_data.orientation.y=q.y();
 	att_data.orientation.z=q.z();
 	att_data.orientation.w=q.w();
-    //ROS_INFO("Phi %f; Theta %f; Yaw %f", phi,theta,yaw);
-	//ROS_INFO("q1 %f; q2 %f; q3 %f; q4 %f", q.x(),q.y(),q.z(),q.w());
-		
-	imu_message.publish(imu_data);
+
 	att_message.publish(att_data);
 }
 
@@ -82,7 +85,7 @@ void ACCELCallback (IvyClientPtr app, void* data , int argc, char **argv)
 	imu_data.header.stamp = ros::Time::now();
 	imu_message.publish(imu_data);
 	
-	//Only Temporary until the rates are equal
+	//Only temporary until the rates are equal
 	acc_data.vector=imu_data.linear_acceleration;
 	acc_data.header=imu_data.header;
 	acc_message.publish(acc_data);

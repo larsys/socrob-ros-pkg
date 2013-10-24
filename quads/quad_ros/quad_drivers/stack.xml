@@ -14,7 +14,7 @@
 	<depend stack="geometry" /> <!-- tf -->
 	<depend stack="mav_tools" /> <!-- mav_msgs -->
 	<depend stack="common" /> <!-- nodelet -->
-	<depend stack="px_comm"/> <!-- PX4Flow-->
+	<depend stack="px-ros-pkg"/> <!-- PX4Flow-->
 	<depend stack="ros" />
 	<depend stack="ros_comm" /> <!-- rospy, std_msgs, roscpp -->
 </stack>

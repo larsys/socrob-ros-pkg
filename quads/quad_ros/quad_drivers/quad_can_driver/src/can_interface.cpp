@@ -50,14 +50,17 @@ void ATTCallback(const quad_can_driver::Attitude& msg){
 int main(int argc, char **argv){
 	
 	ros::init(argc, argv, "can_interface");
-	ros::NodeHandle nh;
+	ros::NodeHandle nh, nh_("~");
 	  
 	ros::Subscriber sub1 = nh.subscribe("ThrustCtrl", 10, ThrustCallback);
 	ros::Subscriber sub2 = nh.subscribe("AttitudeCtrl", 10, ATTCallback);
-
-	double freq_ = 500.0; //Hz - send msg periodically (at least once every second)
-	std::string port_ = "/dev/Can_Converter";
+	
+	double freq_;
+	std::string port_;
 	int speed_ = 115200;
+	
+	nh_.param<std::string>("dev_port", port_, "/dev/Can_Converter");
+	nh_.param("freq", freq_, 100.0); //Hz - send msg periodically (at least once every second)
 	
 	if (freq_<1){
 		ROS_FATAL("Frequency must be greater than 1Hz");
