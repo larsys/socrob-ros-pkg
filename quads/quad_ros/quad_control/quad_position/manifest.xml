@@ -1,0 +1,19 @@
+<package>
+  <description brief="quad_position">
+
+     quad_position
+
+  </description>
+  <author>Henrique</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/quad_position</url>
+  <depend package="roscpp"/>
+  <depend package="std_msgs"/>
+  <depend package="geometry_msgs"/>
+  <depend package="quad_can_driver"/>
+  <depend package="px_comm"/>
+
+</package>
+
+

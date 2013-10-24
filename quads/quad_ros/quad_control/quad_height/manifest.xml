@@ -1,0 +1,21 @@
+<package>
+  <description brief="quad_height">
+
+     quad_height
+
+  </description>
+  <author>Henrique</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/quad_height</url>
+  <depend package="roscpp"/>
+  <depend package="mav_msgs"/>
+  <depend package="std_msgs"/>
+  <depend package="quad_can_driver"/>
+  <depend package="tf"/>
+  <depend package="geometry_msgs"/>
+  <depend package="px_comm"/>
+
+</package>
+
+

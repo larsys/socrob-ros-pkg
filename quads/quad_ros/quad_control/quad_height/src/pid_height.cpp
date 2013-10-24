@@ -1,0 +1,142 @@
+#include "quad_height/pid_height.h"
+#include <math.h>
+#include "mav_msgs/Height.h"
+#include <Eigen/Eigen>
+#include <Eigen/LU>
+#include <std_msgs/Float64.h>
+
+//Nominal Hover Thrust Estimator Variables
+/* Model Constants -> TODO: Config file */
+#define _Ts 0.1
+#define _delta 6.74
+
+bool initialized = false;
+
+//PID Variables
+double p_term, d_term, i_term;
+double ThrustMax = 23.2472;
+double ThrustMin = 6.5241;
+double ThrustCoefA = 0.102613151321317;
+double ThrustCoefB = 3.352893193381934;
+double i_error = 0;
+double U = 0;
+
+////////////////////////////////////////////////////////////////////////
+
+//Kalman Only With Height
+
+//Kalman Variables
+typedef Eigen::Matrix<double, 4, 1> VecState;
+typedef Eigen::Matrix<double, 4, 4> MetState;
+
+VecState xhat, B;
+MetState P, A, Q;
+Eigen::Matrix<double, 4, 1> K;
+Eigen::Matrix<double, 1, 4> C;
+double R, Meas, resid;
+
+//Initializing Nominal Hover Estimator
+void ZKalman_Init(){
+    xhat << 0, 0, 0, _delta;
+    P << 0,0,0,0,
+         0,0,0,0,
+         0,0,0,0,
+         0,0,0,0;
+    A << 1, _Ts, pow(_Ts,2)/2, 0 ,
+         0, 1  , _Ts         , 0 ,
+         0, 0  , 0           , -1,
+         0, 0  , 0           , 1 ;
+    B << 0, 0, 1, 0;
+    C << 1, 0, 0 , 0;
+    Q << 0.1, 0  , 0  , 0  ,
+         0  , 0.1, 0  , 0  ,
+         0  , 0  , 0.1, 0  ,
+         0  , 0  , 0  , 0.1;
+    R = 0.1;
+    initialized=true;
+    U=0;
+}
+
+double ZKalman_newZMeasurement(double z, double zdd){
+    if(initialized){
+        // Predict
+        // Propagate the state estimate and covariance matrix:
+        xhat = A * xhat + B *U;
+        P = A * P * A.transpose() + Q;
+        //Update
+        // Calculate the Kalman gain
+        K = (P * C.transpose()) / (C * P * C.transpose() + R);
+        // Calculate the measurement residual
+        Meas = z;
+        resid = Meas - C*xhat;
+        // Update the state and error covariance estimate
+        xhat = xhat + K*resid;
+        P = (Eigen::MatrixXd::Identity(4, 4)-K*C)*P;
+        return xhat(3);
+    }
+    return 0;
+}
+////////////////////////////////////////////////////////////////////////
+
+int ThrustConversion(double AccZ, double Mass){
+		int thrust = 0;
+        if (AccZ<=ThrustMin){ thrust = 20;
+        }else if (AccZ>=ThrustMax){ thrust = 210;
+        }else{ thrust = round((AccZ*Mass-ThrustCoefB)/ThrustCoefA);	}
+        
+        if (thrust>210) thrust=210;
+		return thrust;
+}
+
+double PID_height(double desired_height, Height_str Height, double height_gain[5], double t, double Mass, double roll, double pitch, ros::Publisher AccZ_pub){
+
+    double p, d, i, i_max, i_min;
+	
+    double error = desired_height - Height.current;
+	
+	p = height_gain[P_GAIN];
+	d = height_gain[D_GAIN];
+	i = height_gain[I_GAIN];
+	i_max = height_gain[I_MAX];
+	i_min = height_gain[I_MIN];
+
+	// Calculate proportional contribution to command
+	p_term = p * error;
+
+	// Calculate the integral error
+	i_error = i_error + t * error;
+	
+	//Calculate integral contribution to command
+	i_term = i * i_error;
+
+	// Limit i_term so that the limit is meaningful in the output
+	if (i_term > i_max){
+		i_term = i_max;
+		i_error=i_term/i;
+	}
+	else if (i_term < -i_min){
+		i_term = -i_min;
+		i_error=i_term/i;
+	}
+
+	// Calculate the derivative error
+    ros::Duration t_d = Height.time_current-Height.time_last;
+    double d_error = (Height.current - Height.last) / t_d.toSec();
+
+    if(abs(d_error)>3.0){
+        d_error=(d_error/abs(d_error))*3.0;
+    }
+	// Calculate derivative contribution to command
+	d_term = d * d_error;
+	
+    double Accz =((p_term + i_term - d_term)+xhat(3));
+    //double Accz =(p_term + i_term - d_term +xhat(3))/(cos(pitch)*cos(roll));
+    U=Accz;
+    int cmd = ThrustConversion (Accz, Mass);
+
+    std_msgs::Float64 az;
+    az.data=Accz;
+    AccZ_pub.publish(az);
+
+	return cmd;
+}

@@ -1,0 +1,11 @@
+<launch>
+	<node pkg="quad_height" type="height_control" name="height_control" output="screen">
+		<param name="height_p" type="double" value="0.8" />
+		<param name="height_i" type="double" value="0.3" />
+		<param name="height_d" type="double" value="0.6" />
+		<param name="height_imax" type="double" value="10.1" />
+		<param name="height_imin" type="double" value="10.1" />
+		<param name="mass" type="double" value="1.5" />
+	</node>
+
+</launch>
