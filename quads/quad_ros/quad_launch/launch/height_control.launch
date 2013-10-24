@@ -1,0 +1,7 @@
+<launch>
+
+	<include file="$(find quad_height)/launch/quad_height.launch"/>
+	
+	<node pkg="quad_can_driver" type="quadCAN" name="quadCAN"/>
+
+</launch>

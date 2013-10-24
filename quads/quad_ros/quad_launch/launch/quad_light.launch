@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+
+<launch>
+
+	<node pkg="quad_link" type="quad_link" name="quad_link" output="screen"/>
+	<include file="$(find imu_parser)/launch/imu_parser.launch"/>
+	<node pkg="quad_status" type="quad_status" name="quad_status" output="screen"/>
+
+	<include file="$(find quad_urdf)/launch/quad_urdf_only.launch"/>
+    <include file="$(find quad_launch)/launch/hokuyo.launch"/>
+	
+    <node pkg="rviz" type="rviz" name="rviz" respawn="true" args="-d $(find quad_launch)/rviz_cfg/att.vcg"/>
+	
+    <node pkg="tf" type="static_transform_publisher" name="base_2_laser_broadcast" args="0 0 0.08 0 0 0 base_link laserCenter 100" />
+	<node pkg="tf" type="static_transform_publisher" name="base_2_laserLeft_broadcast" args="-0.04598 0.09576 0.0 0.475534125170103 -0.523598775598299 -1.57079632679 laserCenter laserLeft 100" />
+	<node pkg="tf" type="static_transform_publisher" name="base_2_laserRight_broadcast" args="-0.04598 -0.09576 0.0 -0.4538 -0.4538 1.57079632679 laserCenter laserRight 100" />
+
+	
+	<node pkg="laser_scan_splitter" type="laser_scan_splitter_node" name="splitter" output="screen">
+		<param name="sizes" value="14 653 14"/>
+		<param name="topics" value="scanRight scanCenter scanLeft"/>
+		<param name="frames" value="laserRight laserCenter laserLeft"/>
+	</node>
+	
+	<node pkg="laser_height" type="laser_height_node" name="laser_height_node" output="screen" respawn="true">
+
+		<param name="scan_topic"        value="/scanLeft"/>
+		<param name="imu_topic"         value="/imu/data"/>
+
+		<param name="global_frame"      value="/map"/>
+		<param name="base_frame"        value="/base_link"/>
+		<param name="stabilized_frame"  value="/base_stabilized"/>
+
+		<param name="max_height_jump"   value="0.7"/>
+		<param name="max_stdev"         value="0.13"/>
+		<param name="min_values"        value="3"/>
+		<param name="bin_size"          value="0.05"/>
+
+		<param name="use_imu"           value="true"/>
+		<param name="use_segmentation"  value="true"/>
+
+	</node>
+	
+</launch>
+
+

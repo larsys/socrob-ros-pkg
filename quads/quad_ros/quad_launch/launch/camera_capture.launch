@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<launch>
+	<node pkg="usb_cam" type="usb_cam_node" name="usb_cam" output="screen">
+		<param name="video_device" value="/dev/video1"/>
+		<param name="image_width" value="640"/>
+		<param name="image_height" value="480"/>
+		<param name="pixel_format" value="yuyv"/> <!-- mjpeg, yuyv, uyvy-->
+		<param name="io_method" value="mmap"/> <!-- mmap, read, userptr-->
+		<param name="camera_frame_id" value="head_camera"/>
+	</node>
+</launch>

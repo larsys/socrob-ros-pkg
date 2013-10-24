@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+
+<launch>
+
+	<node pkg="quad_link" type="quad_link" name="quad_link" output="screen"/>
+	<include file="$(find imu_parser)/launch/imu_parser.launch"/>
+	<node pkg="quad_status" type="quad_status" name="quad_status" output="screen"/>
+	<node pkg="quad_esc" type="quad_esc" name="quad_esc"/>
+	<node pkg="quad_fp" type="quad_fp" name="quad_fp"/>
+	
+	<include file="$(find quad_urdf)/launch/quad_urdf_only.launch"/>
+	<include file="$(find quad_launch)/launch/hokuyo.launch"/>
+	<include file="$(find px4flow_node)/launch/px4flow.launch"/>
+	<node pkg="quad_PX4" type="FilterOF" name="FilterOF" output="screen"/>
+	
+<!--
+	<node pkg="quad_position" type="position_control" name="position_control" output="screen"/>
+-->
+	
+	<node pkg="rosbag" type="record" name="rosbag_record" args="-a -o ~/ros/Bags/"/>   
+	<node pkg="rviz" type="rviz" name="rviz" respawn="true" args="-d $(find quad_launch)/rviz_cfg/att.vcg"/>
+	
+	<node pkg="tf" type="static_transform_publisher" name="base_2_laser_broadcast" args="0 0 0.0 0 0 0 base_link laserCenter 100" />
+	<node pkg="tf" type="static_transform_publisher" name="base_2_laserLeft_broadcast" args="-0.04598 0.09576 0.0 0.475534125170103 -0.523598775598299 -1.57079632679 laser laserLeft 100" />
+	<node pkg="tf" type="static_transform_publisher" name="base_2_laserRight_broadcast" args="-0.04598 -0.09576 0.0 -0.4538 -0.4538 1.57079632679 laser laserRight 100" />
+
+<!--
+		<node pkg="tf" type="static_transform_publisher" name="base_2_laserLeft_broadcast" args="-0.04598 0.09576 0.0 0.453785605518526 -0.5236 -1.57079632679 laser laserLeft 100" />
+-->
+	
+	<node pkg="laser_scan_splitter" type="laser_scan_splitter_node" name="splitter" output="screen">
+		<param name="sizes" value="14 653 14"/>
+		<param name="topics" value="scanRight scanCenter scanLeft"/>
+		<param name="frames" value="laserRight laserCenter laserLeft"/>
+	</node>
+	
+	<node pkg="laser_height_estimation" type="laser_height_estimation_node" name="laser_height_estimation_node" output="screen" respawn="true">
+
+		<remap from="/scan" to="/scanLeft"/>
+
+		<param name="fixed_frame"     value="/map"/>
+		<param name="base_frame"      value="/base_link"/>
+		<param name="footprint_frame" value="/base_footprint"/>
+
+		<param name="max_height_jump" value="0.7"/>
+		<param name="max_stdev"       value="0.13"/>
+		<param name="min_values"      value="3"/>
+		<param name="bin_size"        value="0.05"/>
+
+		<param name="use_imu"         value="true"/>
+		<param name="use_segmentation" value="true"/>
+
+	</node>
+	
+</launch>
+
+

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <node name="hokuyo" pkg="hokuyo_node" type="hokuyo_node" respawn="true" output="screen">
+    <param name="calibrate_time" type="bool" value="true"/> 
+    <param name="port" type="string" value="/dev/Laser"/> 
+    <param name="intensity" type="bool" value="false"/>
+    <param name="frame_id" type="string" value="laser"/>
+    <param name="max_ang" type="double" value="2.0923"/>
+    <param name="min_ang" type="double" value="-2.0862"/>
+  </node>
+  
+</launch>

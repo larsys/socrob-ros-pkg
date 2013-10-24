@@ -1,0 +1,5 @@
+<launch>
+
+	<node pkg="quad_position" type="position_control" name="position_control"/>
+
+</launch>

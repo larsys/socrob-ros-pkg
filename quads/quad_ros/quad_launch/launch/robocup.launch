@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<launch>
+	<node pkg="quad_save_image" type="save_image_sync" name="save_image_sync" output="screen">
+	</node>
+	
+	<node pkg="image_view" type="image_view" name="image_view" args="image:=/usb_cam/image_raw compressed _/usb_cam/image_raw/compressed/jpeg_quality:=20"></node>
+</launch>
+
