@@ -14,7 +14,7 @@
 Reference Ref;
 
 Height_str Height;
-btScalar yaw, pitch, roll;
+tfScalar yaw, pitch, roll;
 
 double RC;
 ros::Publisher zhat_pub, Accz_pub, thrust_pub, desired_pub;
