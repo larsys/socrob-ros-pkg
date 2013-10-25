@@ -9,7 +9,7 @@
 #include "quad_PX4/KState.h"
 
 
-btScalar yaw, pitch, roll;
+tfScalar yaw, pitch, roll;
 bool K_init = false, Az_init = false;
 
 ros::Publisher Kstate_pub;
