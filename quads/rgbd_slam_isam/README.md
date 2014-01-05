@@ -1,9 +1,22 @@
+Diogo Rolo 
+<diogo.rolo@tecnico.ulisboa.pt>
+
 3D SLAM using a RGB-D Sensor
 iSAM used for incremental solving
+
+This package was used and developped for the thesis: Graph-based 6D SLAM for RGB-D Sensors and Hybrid Vision and Depth Camera Localization
+
+Thesis available bellow: https://fenix.ist.utl.pt/publico/showDegreeTheses.do?method=showThesisDetails&degreeID=null&thesisID=2353642464452&contentContextPath_PATH=/cursos/meec/dissertacoes
+
+The package is in alpha stage.
 
 
 
 Original readme bellow:
+
+-------------------------
+-------------------------
+-------------------------
 
 CCNY RGB-D tools 
 ===================================
