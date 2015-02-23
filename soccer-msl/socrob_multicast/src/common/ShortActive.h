@@ -23,7 +23,7 @@
 #include <vector>
 #include <sstream>
 
-#include <boost/thread/mutex.hpp>
+#include <boost/thread.hpp>
 
 #include <ros/console.h>
 

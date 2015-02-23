@@ -22,7 +22,7 @@
 
 #include <iostream>
 
-#include <boost/thread/mutex.hpp>
+#include <boost/thread.hpp>
 
 #include <ros/ros.h>
 #include <std_msgs/UInt8.h>

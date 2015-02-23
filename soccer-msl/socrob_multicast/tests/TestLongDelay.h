@@ -23,7 +23,7 @@
 #include <iostream>
 #include <fstream>
 
-#include <boost/thread/mutex.hpp>
+#include <boost/thread.hpp>
 #include <boost/lexical_cast.hpp>
 
 #include <ros/ros.h>

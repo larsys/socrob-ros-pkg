@@ -23,7 +23,7 @@
 #include <cstddef>
 
 #include <boost/date_time/posix_time/posix_time.hpp>
-#include <boost/thread/mutex.hpp>
+#include <boost/thread.hpp>
 
 
 

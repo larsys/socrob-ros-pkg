@@ -22,7 +22,7 @@
 
 #include <vector>
 
-#include <boost/thread/mutex.hpp>
+#include <boost/thread.hpp>
 
 #include <ros/console.h>
 

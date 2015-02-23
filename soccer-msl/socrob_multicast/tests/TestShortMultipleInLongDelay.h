@@ -24,7 +24,7 @@
 #include <fstream>
 #include <limits>
 
-#include <boost/thread/mutex.hpp>
+#include <boost/thread.hpp>
 #include <boost/random.hpp>
 #include <boost/lexical_cast.hpp>
 #include <boost/foreach.hpp>
