@@ -4,7 +4,7 @@
  * Copyright (c) 2010,
  *  Ivan Dryanovski <ivan.dryanovski@gmail.com>
  *  William Morris <morris@ee.ccny.cuny.edu>
- *  Henrique Silva <henrique.rd.silva@gmail.com>
+ *  Henrique Silva
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without

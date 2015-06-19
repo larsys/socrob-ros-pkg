@@ -14,4 +14,4 @@ Maintainers:
   Rodrigo Ventura <rodrigo.ventura@isr.ist.utl.pt>
   João Reis <joaocgreis@gmail.com>
   Filipe Jesus <filipemoj@gmail.com>
-  Henrique Silva <henrique.rd.silva@gmail.com>
+  Henrique Silva
